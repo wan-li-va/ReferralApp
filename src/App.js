@@ -3,13 +3,10 @@ import './App.css';
 import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
 import Firebase from './Firebase.js';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login.js';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
-=======
->>>>>>> master
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
