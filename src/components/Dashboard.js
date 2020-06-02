@@ -4,6 +4,7 @@ import ReferralDisplay from './Dashboard/ReferralDisplay.js';
 import Rewards from './Dashboard/Rewards.js';
 import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
+import '../styling/Dashboard.css';
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -43,19 +44,22 @@ export default class Dashboard extends Component {
         } = this.props;
 
         return (
-            <div>
-                Dashboard
-                <ProgressBar
-                    numReferrals={this.state.numReferrals}
-                    nextAchievement={this.state.nextAchievement} />
-                <ReferralDisplay code={this.state.referralCode} />
-                <Rewards rewards={this.state.rewards} />
-                <Social
-                    referralCode={this.state.referralCode}
-                    hasShared={this.state.hasShared} />
-                <NextReward
-                    nextAchievement={this.state.nextAchievement}
-                    rewards={this.state.rewards} />
+            <div className="Dashboard">
+                <Rewards classname="Rewards" rewards={this.state.rewards} />
+                <div className="displayMainPanel">
+                    <ReferralDisplay className="ReferralDisplay" code={this.state.referralCode} />
+                    <Social
+                        referralCode={this.state.referralCode}
+                        hasShared={this.state.hasShared} />
+                    <div className="displayProgress">
+                        <ProgressBar
+                            numReferrals={this.state.numReferrals}
+                            nextAchievement={this.state.nextAchievement} />
+                        <NextReward
+                            nextAchievement={this.state.nextAchievement}
+                            rewards={this.state.rewards} />
+                    </div>
+                </div>
             </div>
         )
     }
