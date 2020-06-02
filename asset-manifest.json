@@ -1,25 +1,28 @@
 {
   "files": {
-    "main.css": "/ReferralApp/static/css/main.db706a61.chunk.css",
-    "main.js": "/ReferralApp/static/js/main.70dced97.chunk.js",
-    "main.js.map": "/ReferralApp/static/js/main.70dced97.chunk.js.map",
+    "main.css": "/ReferralApp/static/css/main.c8a57356.chunk.css",
+    "main.js": "/ReferralApp/static/js/main.50810b24.chunk.js",
+    "main.js.map": "/ReferralApp/static/js/main.50810b24.chunk.js.map",
     "runtime-main.js": "/ReferralApp/static/js/runtime-main.dc668e0c.js",
     "runtime-main.js.map": "/ReferralApp/static/js/runtime-main.dc668e0c.js.map",
     "static/css/2.af3c1da9.chunk.css": "/ReferralApp/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.4af31ce5.chunk.js": "/ReferralApp/static/js/2.4af31ce5.chunk.js",
-    "static/js/2.4af31ce5.chunk.js.map": "/ReferralApp/static/js/2.4af31ce5.chunk.js.map",
+    "static/js/2.84dc57a8.chunk.js": "/ReferralApp/static/js/2.84dc57a8.chunk.js",
+    "static/js/2.84dc57a8.chunk.js.map": "/ReferralApp/static/js/2.84dc57a8.chunk.js.map",
     "index.html": "/ReferralApp/index.html",
-    "precache-manifest.83fafce6f8ec6c944dc28354f1956590.js": "/ReferralApp/precache-manifest.83fafce6f8ec6c944dc28354f1956590.js",
+    "precache-manifest.39a63d9642a59da68a708125fc41a03d.js": "/ReferralApp/precache-manifest.39a63d9642a59da68a708125fc41a03d.js",
     "service-worker.js": "/ReferralApp/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/ReferralApp/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.db706a61.chunk.css.map": "/ReferralApp/static/css/main.db706a61.chunk.css.map",
-    "static/js/2.4af31ce5.chunk.js.LICENSE.txt": "/ReferralApp/static/js/2.4af31ce5.chunk.js.LICENSE.txt"
+    "static/css/main.c8a57356.chunk.css.map": "/ReferralApp/static/css/main.c8a57356.chunk.css.map",
+    "static/js/2.84dc57a8.chunk.js.LICENSE.txt": "/ReferralApp/static/js/2.84dc57a8.chunk.js.LICENSE.txt",
+    "static/media/facebook.ico": "/ReferralApp/static/media/facebook.4022e4f6.ico",
+    "static/media/instagram.ico": "/ReferralApp/static/media/instagram.7cea17bc.ico",
+    "static/media/twitter.svg": "/ReferralApp/static/media/twitter.ba0dc499.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.dc668e0c.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.4af31ce5.chunk.js",
-    "static/css/main.db706a61.chunk.css",
-    "static/js/main.70dced97.chunk.js"
+    "static/js/2.84dc57a8.chunk.js",
+    "static/css/main.c8a57356.chunk.css",
+    "static/js/main.50810b24.chunk.js"
   ]
 }
