@@ -2,14 +2,29 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
-import Firebase from './Firebase.js';
+import { withFirebase } from './components/Firebase';
+import Auth from './components/Auth';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      id: ""
     }
+  }
+
+  componentDidMount = () => {
+    const { firebase } = this.props;
+    firebase.user(1).once('value')
+      .then(snapshot => {
+        let userObj = snapshot.val();
+      })
+  }
+
+  setUser = (uid) => {
+    this.setState({
+      id: uid
+    })
   }
 
 
@@ -17,9 +32,11 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1 style={{ textAlign: "center" }}>Somebirds</h1>
-        <Header />
-        <Dashboard />
+        {/* <Header />
+        <Dashboard /> */}
+        <Auth setUser={uid => this.setUser(uid)} />
       </div>
     );
   }
 }
+export default withFirebase(App);
