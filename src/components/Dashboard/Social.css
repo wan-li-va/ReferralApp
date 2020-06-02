@@ -1,0 +1,35 @@
+.platform-grid {
+    /* display: grid;
+    grid-template-areas: "instagram facebook twitter"; */
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+.share-label {
+    text-align: center;
+}
+
+.instagram {
+    grid-area: instagram;
+    height: inherit;
+}
+
+.twitter {
+    grid-area: twitter;
+    height: inherit;
+}
+
+.facebook {
+    grid-area: facebook;
+    height: inherit;
+}
+
+img {
+    height: inherit;
+}
+
+a {
+    cursor: pointer;
+    margin: 3px;
+}
