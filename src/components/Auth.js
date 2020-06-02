@@ -41,9 +41,9 @@ const Auth = props => {
         let postRef = firebase.users().push({
             email: email
         })
-        let userObj = { email: email, id: postRef.key };
+        let userObj = { email: email, id: postRef.key, referralCode: postRef.key.substring(3), numReferrals: 0, hasShared: false, rewards: { 0: 'dummy' } };
         firebase.user(postRef.key)
-            .push(userObj)
+            .set(userObj)
         firebase.user(1).once('value')
             .then(snapshot => {
                 let users = snapshot.val();
@@ -51,7 +51,7 @@ const Auth = props => {
                 for (let key in users) {
                     userArr.push(users[key])
                 }
-                userArr = [...userArr, userObj];
+                userArr = [...userArr, { email: email, id: postRef.key }];
                 firebase.user(1).update(userArr);
             })
         props.setUser(postRef.key);
