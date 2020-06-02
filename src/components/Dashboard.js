@@ -5,18 +5,26 @@ import Rewards from './Dashboard/Rewards.js';
 import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
 
+
+
+
 export default class Dashboard extends Component {
+    
+    
+    
     constructor(props) {
         super(props);
         this.state = {
-            numReferrals: 0,
+            numReferrals: 26,
             nextAchievement: 10,
             referralCode: "",
-            rewards: {},
             hasShared: false,
         }
+        
     }
 
+ 
+ 
     /*  Person info
         "id": {
             referralCode,
@@ -35,6 +43,18 @@ export default class Dashboard extends Component {
             id
         get data we need
         */
+
+       const rewards = [
+        "You've reached " + this.state.numReferrals + "points! You've been added to our exclusive Facebook Group!" ,
+        "You've reached " + this.state.numReferrals + "points! We're sending our brand stickers!",
+        "You've reached " + this.state.numReferrals + "points! You win a free t-shirt!",
+        "You've reached " + this.state.numReferrals + "points! Free pair of shoes on the house!" 
+    ]
+
+    this.setState({
+        rewards: rewards 
+    })
+    
     }
 
     render() {
@@ -49,7 +69,7 @@ export default class Dashboard extends Component {
                     numReferrals={this.state.numReferrals}
                     nextAchievement={this.state.nextAchievement} />
                 <ReferralDisplay code={this.state.referralCode} />
-                <Rewards rewards={this.state.rewards} />
+                <Rewards rewards={this.state.rewards} numReferrals={this.state.numReferrals} nextAchievement={this.state.nextAchievement}/>
                 <Social
                     referralCode={this.state.referralCode}
                     hasShared={this.state.hasShared} />

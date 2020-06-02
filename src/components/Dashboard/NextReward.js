@@ -1,6 +1,17 @@
 import React from 'react'
 
-const NextReward = () => {
+
+/*
+rewards, nextAchievement
+
+*/
+
+const nextReward = () => {
+
+}
+
+
+const NextReward = (props) => {
     return (
         <div></div>
     )
