@@ -37,6 +37,16 @@ export default class Dashboard extends Component {
         */
     }
 
+    handleSocialShare = () => {
+        this.setState(prevState => {
+            if (!prevState.hasShared)
+                return {
+                    numReferrals: prevState.numReferrals + 1,
+                    hasShared: true
+                }
+        })
+    }
+
     render() {
         const {
             userID
@@ -51,6 +61,7 @@ export default class Dashboard extends Component {
                 <ReferralDisplay code={this.state.referralCode} />
                 <Rewards rewards={this.state.rewards} />
                 <Social
+                    handleSocialShare={this.handleSocialShare}
                     referralCode={this.state.referralCode}
                     hasShared={this.state.hasShared} />
                 <NextReward
