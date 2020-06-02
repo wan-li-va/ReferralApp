@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ReferralApp/static/css/main.27fd15f6.chunk.css",
+    "main.js": "/ReferralApp/static/js/main.0d780471.chunk.js",
+    "main.js.map": "/ReferralApp/static/js/main.0d780471.chunk.js.map",
+    "runtime-main.js": "/ReferralApp/static/js/runtime-main.dc668e0c.js",
+    "runtime-main.js.map": "/ReferralApp/static/js/runtime-main.dc668e0c.js.map",
+    "static/js/2.9e82d6b8.chunk.js": "/ReferralApp/static/js/2.9e82d6b8.chunk.js",
+    "static/js/2.9e82d6b8.chunk.js.map": "/ReferralApp/static/js/2.9e82d6b8.chunk.js.map",
+    "index.html": "/ReferralApp/index.html",
+    "precache-manifest.aac46544aba3b86aa635f6b6fed68efe.js": "/ReferralApp/precache-manifest.aac46544aba3b86aa635f6b6fed68efe.js",
+    "service-worker.js": "/ReferralApp/service-worker.js",
+    "static/css/main.27fd15f6.chunk.css.map": "/ReferralApp/static/css/main.27fd15f6.chunk.css.map",
+    "static/js/2.9e82d6b8.chunk.js.LICENSE.txt": "/ReferralApp/static/js/2.9e82d6b8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc668e0c.js",
+    "static/js/2.9e82d6b8.chunk.js",
+    "static/css/main.27fd15f6.chunk.css",
+    "static/js/main.0d780471.chunk.js"
+  ]
+}
