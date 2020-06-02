@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
 import Firebase from './Firebase.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
   constructor(props) {
