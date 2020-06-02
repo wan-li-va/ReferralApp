@@ -9,16 +9,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: ""
+      id: "3"
     }
   }
 
-  componentDidMount = () => {
+  componentDidUpdate = () => {
     const { firebase } = this.props;
-    firebase.user(1).once('value')
+    const { id } = this.state;
+    firebase.user(id).once('value')
       .then(snapshot => {
         let userObj = snapshot.val();
+        this.setState({ authUser: userObj });
       })
+      .catch(err => console.log(err))
   }
 
   setUser = (uid) => {

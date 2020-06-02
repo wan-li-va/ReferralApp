@@ -23,7 +23,7 @@ const Auth = props => {
                     }
                 })
                 if (user[0]) {
-                    handleOldUser(user);
+                    handleOldUser(user[0].id);
                 } else {
                     handleNewUser(email);
                 }
@@ -31,8 +31,8 @@ const Auth = props => {
 
     }
 
-    const handleOldUser = (user) => {
-        props.setUser(user.id);
+    const handleOldUser = (uid) => {
+        props.setUser(uid);
         return <Redirect to='/Dashboard' />
     }
 
