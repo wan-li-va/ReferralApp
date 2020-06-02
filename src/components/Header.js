@@ -1,9 +1,14 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import '../styling/Header.css'
 
 const Header = () => {
     return (
-        <div>
-            Header
+        <div className="Header">
+            <h1 className="Title">ReSHOE</h1> 
+            <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4>
+            <Link className="HeaderLink" to="/ReSHOE/about">About Us</Link>
+            <Link className="HeaderLink" to="/ReSHOE/faq">FAQ</Link>
         </div>
     )
 }
