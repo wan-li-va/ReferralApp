@@ -7,8 +7,8 @@ const Header = () => {
         <div className="Header">
             <h1 className="Title">ReSHOE</h1> 
             <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4>
-            <Link className="HeaderLink" to="/ReSHOE/about">About Us</Link>
-            <Link className="HeaderLink" to="/ReSHOE/faq">FAQ</Link>
+            <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
+            <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
         </div>
     )
 }

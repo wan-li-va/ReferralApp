@@ -24,10 +24,10 @@ export default class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/ReSHOE/dashboard" component={Dashboard} />
-            <Route path="/ReSHOE/about" component={AboutUs} />
-            <Route path="/ReSHOE/faq" component={FAQ} />
-            <Route path="/ReSHOE/" exact >
+            <Route path="/ReferralApp/dashboard" component={Dashboard} />
+            <Route path="/ReferralApp/about" component={AboutUs} />
+            <Route path="/ReferralApp/faq" component={FAQ} />
+            <Route path="/ReferralApp/" exact >
               <Login />
             </Route>
           </Switch>
