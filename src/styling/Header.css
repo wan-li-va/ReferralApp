@@ -1,0 +1,26 @@
+.Header {
+    background-color: lightgreen;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    width: 100%
+}
+
+.Title {
+    margin-right: 5vw;
+}
+
+.Subtitle {
+    font-style: italic;
+    margin-right: 5vw;
+}
+
+.HeaderLink {
+    font-style: bold;
+    background-color: skyblue;
+    padding: 1vw;
+    margin-right: 1vw;
+}

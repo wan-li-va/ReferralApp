@@ -4,11 +4,11 @@ import '../styling/Header.css'
 
 const Header = () => {
     return (
-        <div>
-            <h1>ReSHOE</h1> 
-            <h3>Responsibly Show Hoo Owns the Environment</h3>
-            <Link to="/ReSHOE/about">About Us</Link>
-            <Link to="/ReSHOE/faq">FAQ</Link>
+        <div className="Header">
+            <h1 className="Title">ReSHOE</h1> 
+            <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4>
+            <Link className="HeaderLink" to="/ReSHOE/about">About Us</Link>
+            <Link className="HeaderLink" to="/ReSHOE/faq">FAQ</Link>
         </div>
     )
 }
