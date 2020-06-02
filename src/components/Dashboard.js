@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numReferrals: 0,
+            numReferrals: 8,
             nextAchievement: 10,
             referralCode: "",
             rewards: {},
