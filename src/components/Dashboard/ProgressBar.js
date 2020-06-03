@@ -18,6 +18,7 @@ const ProgressComponent = ({ numReferrals, nextAchievement }) => {
     } else if (pct <= 20) {
         variant = "danger"
     }
+    console.log(nextAchievement);
     return (
         <div>
             <div className="labels">
