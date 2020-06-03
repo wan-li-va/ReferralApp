@@ -1,0 +1,28 @@
+.form-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    outline: #8C8B8C solid 0.7vw;
+    padding: 5vh 10vw 5vh 10vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .form {
+        padding-top: 12vh;
+    }
+}
+
+.email-form {
+    max-width: 300px;
+}

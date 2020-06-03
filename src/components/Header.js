@@ -22,13 +22,16 @@ const Header = props => {
             <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
             {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
             {props.signedIn ?
-                <Button variant='warning' onClick={() => {
-                    setRedirect(true);
-                    props.handleSignOut()
-                }}>Sign Out</Button>
-                : <Button variant='warning' onClick={() => {
-                    setRedirect(true);
-                }}>Sign In</Button>}
+                <Button style={{ backgroundColor: "#FFE521" }}
+                    variant='warning' onClick={() => {
+                        setRedirect(true);
+                        props.handleSignOut()
+                    }}>Sign Out
+                    </Button>
+                : <Button style={{ backgroundColor: "#FFE521" }}
+                    variant='warning' onClick={() => {
+                        setRedirect(true);
+                    }}>Sign In</Button>}
             {redirect ? <Redirect to='/ReferralApp/' /> : ""}
         </div>
     )

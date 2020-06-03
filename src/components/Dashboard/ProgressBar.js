@@ -5,15 +5,10 @@ import './ProgressBar.css';
 const ProgressComponent = ({ numReferrals, nextAchievement }) => {
     let pct = (numReferrals / nextAchievement) * 100;
     let variant = "info";
-    let message = (nextAchievement - numReferrals) + " ";
-    let left = "points left!"
-    if (nextAchievement - numReferrals === 1) {
-        left = "point left!";
-    }
-    message += left;
+    let message = "";
     if (pct >= 80) {
         variant = "success";
-        message = "Almost there! " + message;
+        message = "Almost there! ";
 
     } else if (pct <= 20) {
         variant = "danger"
@@ -26,7 +21,7 @@ const ProgressComponent = ({ numReferrals, nextAchievement }) => {
                 <a className="center-label">{message}</a>
                 <a className="right-label">{nextAchievement}</a>
             </div>
-            <ProgressBar style={{ height: "30px" }} variant={variant} now={pct} srOnly label={numReferrals} />
+            <ProgressBar style={{ height: "30px", width: "250px" }} variant={variant} now={pct} srOnly label={numReferrals} />
         </div>
     );
 }

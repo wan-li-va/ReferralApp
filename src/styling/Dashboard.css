@@ -47,7 +47,7 @@
     padding-left: 10vw;
     padding-right: 10vw;
     outline: #8C8B8C solid 1vw;
-    margin-bottom: 3vh;
+    margin-bottom: 4vh;
     background: #FFE521;
 }
 
@@ -68,5 +68,5 @@
 .Card {
     /* outline: #8C8B8C solid 1vh;
     outline-offset: 1vh; */
-    width: 35vw;
+    width: 30vw;
 }
