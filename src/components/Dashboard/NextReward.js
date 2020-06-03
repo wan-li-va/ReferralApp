@@ -1,14 +1,14 @@
 import React from 'react'
 
 const NextReward = ({ rewards, nextAchievement, numReferrals }) => {
-    let hasAllRewards = true;
+    // let hasAllRewards = true;
 
     const nextReward = (rewards, nextAchievement) => {
         let nextreward = { name: "You have all the possible rewards" };
-        Object.values(rewards).map(reward => {
+        rewards.map(reward => {
             if (reward.numRequired === nextAchievement) {
                 nextreward = reward;
-                hasAllRewards = false;
+                // hasAllRewards = false;
             }
         })
         return nextreward;
@@ -19,7 +19,7 @@ const NextReward = ({ rewards, nextAchievement, numReferrals }) => {
         let referrals = "referrals";
         if (num === 1)
             referrals = "referral";
-        let message = `Just ${num} more ${referrals} until you get ${nextReward(rewards, nextAchievement).name}`;
+        // let message = `Just ${num} more ${referrals} until you get ${nextReward(rewards, nextAchievement).name}`;
         return (
             <div>
                 Just {num} more {referrals} until you get {nextReward(rewards, nextAchievement).name}

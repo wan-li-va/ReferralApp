@@ -48,3 +48,14 @@
         margin-bottom: 0;  */
     }
 }
+
+.Links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 50px;
+    /* margin-left: 30px;
+    margin-right: 20px; */
+}

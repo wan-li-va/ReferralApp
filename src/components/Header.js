@@ -6,7 +6,7 @@ import '../styling/Header.css'
 
 const Header = props => {
     const [redirect, setRedirect] = useState(false);
-    const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
+    // const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
 
     useEffect(() => {
         if (redirect === true) {
@@ -16,23 +16,25 @@ const Header = props => {
 
     return (
         <div className="Header">
-            <h1 className="Title"><img className="Logo" src={require('../assembled.png')}></img></h1>
-            <h1 className="SmallTitle"><img className="Logo" src={require('../assembled-small.png')}></img></h1>
-            <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
-            <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
-            {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
-            {props.signedIn ?
-                <Button style={{ backgroundColor: "#FFE521" }}
-                    variant='warning' onClick={() => {
-                        setRedirect(true);
-                        props.handleSignOut()
-                    }}>Sign Out
+            <h1 className="Title"><img alt="reshoe logo" className="Logo" src={require('../assembled.png')}></img></h1>
+            <h1 className="SmallTitle"><img alt="reshoe logo" className="Logo" src={require('../assembled-small.png')}></img></h1>
+            <div className="Links">
+                <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
+                <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
+                {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
+                {props.signedIn ?
+                    <Button style={{ backgroundColor: "#FFE521" }}
+                        variant='warning' onClick={() => {
+                            setRedirect(true);
+                            props.handleSignOut()
+                        }}>Sign Out
                     </Button>
-                : <Button style={{ backgroundColor: "#FFE521" }}
-                    variant='warning' onClick={() => {
-                        setRedirect(true);
-                    }}>Sign In</Button>}
-            {redirect ? <Redirect to='/ReferralApp/' /> : ""}
+                    : <Button style={{ backgroundColor: "#FFE521" }}
+                        variant='warning' onClick={() => {
+                            setRedirect(true);
+                        }}>Sign In</Button>}
+                {redirect ? <Redirect to='/ReferralApp/' /> : ""}
+            </div>
         </div>
     )
 };

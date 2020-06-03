@@ -25,7 +25,7 @@ const App = ({ firebase }) => {
         })
         .catch(err => console.log(err))
     }
-  }, [id])
+  }, [id, firebase])
 
   const handleSignOut = () => {
     setID("3");
