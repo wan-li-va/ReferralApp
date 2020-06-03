@@ -9,6 +9,7 @@ const Header = props => {
     const [signedIn, setSignedIn] = useState(false);
 
     useEffect(() => {
+        console.log(props.signedIn)
         setSignedIn(props.signedIn);
     }, [props.signedIn])
 
@@ -24,7 +25,7 @@ const Header = props => {
             {signedIn ?
                 <Button onClick={() => {
                     setRedirect(true);
-                    return props.handleSignOut
+                    return props.handleSignOut()
                 }}>Sign Out</Button>
                 : <Button onClick={() => {
                     setRedirect(true);
