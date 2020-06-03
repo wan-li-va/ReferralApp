@@ -1,18 +1,16 @@
-import React, { useState, useRef } from 'react';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
 import { withFirebase } from './Firebase';
-import Form from 'react-bootstrap/Form';
 import { Redirect } from 'react-router-dom';
-import Overlay from 'react-bootstrap/Overlay';
-import Tooltip from 'react-bootstrap/ToolTip';
+import { RenderNewUserForm, RenderNormalForm } from './Auth/AuthForms';
 
 const Auth = props => {
     const [email, setEmail] = useState("");
     const [isNewUser, setIsNewUser] = useState(false);
     const [show, setShow] = useState(false);
-    const [signedIn, setSignedIn] = useState(false);
-    const target = useRef(null);
 
+    /* HandleSubmit takes in a submit event from a form, handles both the sign up and sign in form, and determines whether it is a new user or not
+        @param e event generated from submitting form
+    */
     const handleSubmit = (e) => {
         const { firebase } = props;
         e.preventDefault();
@@ -36,11 +34,19 @@ const Auth = props => {
 
     }
 
+    /*
+    handleOldUser takes in a user ID and sets the User in parent App.js, allowing for it to find the currently signed in user
+        @param uid User ID
+    */
     const handleOldUser = (uid) => {
         props.setUser(uid);
-        setSignedIn(true);
     }
 
+    /*
+    checkRefCode takes in an email and the referral code the user put in, checks the database to see if the referral is from a valid user 
+        @param email user email found earlier
+        @param refCode The referral code that the user signing up used
+    */
     const checkRefCode = (email, refCode) => {
         const { firebase } = props;
         if (refCode !== "")
@@ -70,6 +76,11 @@ const Auth = props => {
         }
     }
 
+    /*
+    handleNewUser takes in email and a boolen to determine whether or not to go through with the submitted form
+        @param email string that shows the user's email
+        @param error boolean that give condition of whether or not to handle the submitted form
+    */
     const handleNewUser = (email, error) => {
         const { firebase } = props;
         if (!error) {
@@ -91,40 +102,14 @@ const Auth = props => {
                     firebase.user(1).update(userArr);
                 })
             props.setUser(id);
-            setSignedIn(true);
         }
     }
 
-    const renderNewUserForm = () => (
-        <Form onSubmit={event => (handleSubmit(event))}>
-            <Form.Group controlId='formEmail' >
-                <Form.Label>Enter your email address!</Form.Label>
-                <Form.Control type='email' placeholder='Enter email' defaultValue={email} />
-            </Form.Group>
-            <Form.Group controlId='formReferral'>
-                <Form.Label>Enter a referral code if applicable</Form.Label>
-                <Form.Control type='text' placeholder='Enter Referral Code' ref={target} />
-                <Overlay target={target.current} show={show} placement='bottom'>
-                    {props => (<Tooltip id='overlay-error' {...props}>
-                        Please put in a correct referral code
-                    </Tooltip>)}
-                </Overlay>
-            </Form.Group>
-            <Button variant='primary' type='submit'>Submit!</Button>
-        </Form>
-    );
-
     return (
         <div>
-            {signedIn ? <Redirect to='/dashboard' />
-                : isNewUser ? renderNewUserForm()
-                    : <Form onSubmit={event => (handleSubmit(event))}>
-                        <Form.Group controlId='formEmail' >
-                            <Form.Label>Enter your email address!</Form.Label>
-                            <Form.Control type='email' placeholder='Enter email' />
-                        </Form.Group>
-                        <Button variant='primary' type='submit'>Submit!</Button>
-                    </Form>}
+            {props.signedIn ? <Redirect to='/ReferralApp/dashboard' />
+                : isNewUser ? <RenderNewUserForm show={show} email={email} handleSubmit={e => handleSubmit(e)} />
+                    : <RenderNormalForm handleSubmit={e => handleSubmit(e)} />}
         </div>
     );
 }

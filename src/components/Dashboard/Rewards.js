@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 
+
 const Rewards = ({ rewards, userRewards }) => {
 
     const rewardKeys = Object.keys(rewards);
