@@ -1,22 +1,72 @@
 .Dashboard {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* justify-content: center; */
 }
 
-.displayMainMenu {
+.displayMainPanel {
     display: flex;
     flex-direction: column;
+    margin-top: 5vh;
+    flex: 2;
+    margin-right: 10vw;
+    margin-top: 20vh;
 }
 
 .displayProgress {
     display: flex;
-    flex-direction: row;
+    margin-top: 5vh;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Rewards {
-    margin-right: 10vw;
+    margin-right: 5vw;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 5vw;
+    align-items: center;
+    margin-top: 18vh;
 }
 
 .ReferralDisplay {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.Code {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    outline: #8C8B8C solid 1vw;
+    margin-bottom: 3vh;
+    background: #FFE521;
+}
+
+.PossibleRewards {
+    background-color: #8C8B8C;
+    border-radius: 10%;
+    width: 100%;
+    text-align: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.rewardList {
+    overflow-y: auto;
+    height: 60vh;
+}
+
+.Card {
+    /* outline: #8C8B8C solid 1vh;
+    outline-offset: 1vh; */
+    width: 35vw;
 }

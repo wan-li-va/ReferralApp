@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import '../styling/InfoPages.css';
 
 const faq = () => {
   return (
-    <div>
+    <div className="page">
       <h1>FAQ</h1>
       <h4>Q: How do I get points?</h4>
       <p>

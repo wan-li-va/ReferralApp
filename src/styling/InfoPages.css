@@ -1,0 +1,29 @@
+.page {
+    padding: 20vh 10% 0 10%;
+    text-align: left;
+    float: left;
+    display: block;
+    justify-content: left;
+    background-color: #DDD;
+    min-height: 100vh;
+    width: 100%;
+    /* align-items: ; */
+    /* background-color: #DDD; */
+}
+
+@media screen and (max-width: 1000px) {
+    .page {
+        padding-top: 12vh;
+    }
+}
+
+.environment-img {
+    float: right;
+    min-width: 20%;
+    max-width: 40%;
+}
+
+.shoes {
+    min-width: 20%;
+    max-width: 40%;
+}

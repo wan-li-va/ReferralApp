@@ -11,8 +11,8 @@ const ReferralDisplay = ({ code }) => {
 
     return (
         <div className="ReferralDisplay">
-            <h3>{code}</h3>
-            <Button onClick={() => { navigator.clipboard.writeText(code) }}>Copy</Button>
+            <h1 className="Code">{code}</h1>
+            <Button variant="warning" onClick={() => { navigator.clipboard.writeText(code) }}>Copy Code</Button>
         </div>
     );
 }

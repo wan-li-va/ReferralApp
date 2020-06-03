@@ -9,23 +9,23 @@ import '../styling/Dashboard.css';
 const Dashboard = ({ userID, firebase }) => {
     const [numReferrals, setNumReferrals] = useState(24);
     const [nextAchievement, setNextAchievement] = useState(10);
-    const [referralCode, setReferralCode] = useState("");
+    const [referralCode, setReferralCode] = useState("CODE");
     const [rewards, setRewards] = useState(
         {
             "-Masidibe": {
-                name: "You've been added to our exclusive Facebook Group!",
+                name: "added to our exclusive Facebook Group!",
                 numRequired: 10
             },
             "-Masifbe": {
-                name: "We're sending our brand stickers!",
+                name: "our brand stickers!",
                 numRequired: 25
             },
             "-Masidasdbe": {
-                name: "You win a free t-shirt!",
+                name: "you get a free t-shirt!",
                 numRequired: 50
             },
             "-Masiasefibe": {
-                name: "Free pair of shoes on the house!",
+                name: "you get a free pair of shoes, on the house!",
                 numRequired: 100
             },
         }
