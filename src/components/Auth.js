@@ -15,13 +15,7 @@ const Auth = props => {
         firebase.user(1).once('value')
             .then(snapshot => {
                 let userArr = snapshot.val();
-                let user = userArr.filter(userObj => {
-                    if (userObj.email === email) {
-                        return userObj
-                    } else {
-                        return null;
-                    }
-                })
+                let user = userArr.filter(userObj => userObj.email === email)
                 if (user[0]) {
                     handleOldUser(user[0].id);
                 } else {
