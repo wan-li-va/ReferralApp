@@ -6,14 +6,8 @@ import '../styling/Header.css'
 
 const Header = props => {
     const [redirect, setRedirect] = useState(false);
-    const [signedIn, setSignedIn] = useState(false);
-
-    useEffect(() => {
-        console.log(props.signedIn)
-        setSignedIn(props.signedIn);
-    }, [props.signedIn])
-
     const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
+
     return (
         <div className="Header">
             <h1 className="Title"><img className="Logo" src={require('../assembled.png')}></img></h1>
@@ -21,8 +15,8 @@ const Header = props => {
             {/* <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4> */}
             <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
             <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
-            {signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
-            {signedIn ?
+            {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
+            {props.signedIn ?
                 <Button onClick={() => {
                     setRedirect(true);
                     return props.handleSignOut()
