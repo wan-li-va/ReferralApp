@@ -10,7 +10,12 @@ const Dashboard = ({ userID, firebase }) => {
     const [numReferrals, setNumReferrals] = useState(8);
     const [nextAchievement, setNextAchievement] = useState(10);
     const [referralCode, setReferralCode] = useState("");
-    const [rewards, setRewards] = useState({});
+    const [rewards, setRewards] = useState([
+        {name: "You've been added to our exclusive Facebook Group!", numRequired: 10},
+        {name: "We're sending our brand stickers!", numRequired: 25},
+        {name: "You win a free t-shirt!", numRequired: 50},
+        {name: "Free pair of shoes on the house!", numRequired: 100}  
+    ]);
     const [hasShared, setHasShared] = useState(false);
 
     // useEffect(
