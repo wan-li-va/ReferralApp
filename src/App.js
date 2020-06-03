@@ -48,7 +48,7 @@ class App extends Component {
             <Route path="/ReferralApp/about" component={AboutUs} />
             <Route path="/ReferralApp/faq" component={FAQ} />
             <Route path="/ReferralApp/" exact >
-              <Auth setUser={uid => setUser(uid)} />
+              <Auth setUser={uid => this.setUser(uid)} />
             </Route>
           </Switch>
         </div>

@@ -43,26 +43,31 @@ const Auth = props => {
 
     const checkRefCode = (email, refCode) => {
         const { firebase } = props;
-        firebase.user(1).once('value')
-            .then(snapshot => {
-                let userArr = snapshot.val();
-                let user = userArr.filter(userObj => userObj.id.substring(3) === refCode);
-                if (user[0]) {
-                    let id = user[0].id
-                    firebase.user(id).once('value')
-                        .then(snapshot => {
-                            let userObj = snapshot.val();
-                            firebase.user(id).update({
-                                numReferrals: userObj.numReferrals + 1,
-                                hasShared: true
+        if (refCode !== "")
+            firebase.user(1).once('value')
+                .then(snapshot => {
+                    let userArr = snapshot.val();
+                    let user = userArr.filter(userObj => userObj.id.substring(3) === refCode);
+                    if (user[0]) {
+                        let id = user[0].id
+                        firebase.user(id).once('value')
+                            .then(snapshot => {
+                                let userObj = snapshot.val();
+                                firebase.user(id).update({
+                                    numReferrals: userObj.numReferrals + 1,
+                                    hasShared: true
+                                })
                             })
-                        })
-                    setShow(false);
-                    handleNewUser(email, false);
-                } else {
-                    setShow(true);
-                }
-            })
+                        setShow(false);
+                        handleNewUser(email, false);
+                    } else {
+                        setShow(true);
+                    }
+                })
+        else {
+            setShow(false);
+            handleNewUser(email, false);
+        }
     }
 
     const handleNewUser = (email, error) => {
