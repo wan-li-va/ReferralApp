@@ -13,15 +13,17 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate = () => {
+  componentDidUpdate = (prevState) => {
     const { firebase } = this.props;
     const { id } = this.state;
-    firebase.user(id).once('value')
-      .then(snapshot => {
-        let userObj = snapshot.val();
-        this.setState({ authUser: userObj });
-      })
-      .catch(err => console.log(err))
+    if (id !== '3' && prevState.id === id) {
+      firebase.user(id).once('value')
+        .then(snapshot => {
+          let userObj = snapshot.val();
+          this.setState({ authUser: userObj });
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   setUser = (uid) => {
