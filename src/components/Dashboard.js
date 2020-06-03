@@ -45,10 +45,10 @@ export default class Dashboard extends Component {
         */
 
        const rewards = [
-        "You've reached " + this.state.numReferrals + "points! You've been added to our exclusive Facebook Group!" ,
-        "You've reached " + this.state.numReferrals + "points! We're sending our brand stickers!",
-        "You've reached " + this.state.numReferrals + "points! You win a free t-shirt!",
-        "You've reached " + this.state.numReferrals + "points! Free pair of shoes on the house!" 
+        {name: "You've been added to our exclusive Facebook Group!", numRequired: 10},
+        {name: "We're sending our brand stickers!", numRequired: 25},
+        {name: "You win a free t-shirt!", numRequired: 50},
+        {name: "Free pair of shoes on the house!", numRequired: 100}  
     ]
 
     this.setState({
