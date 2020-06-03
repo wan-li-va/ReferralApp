@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button'
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
-export default class ReferralDisplay extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            code: "CODE"
-        }
-    }
+const ReferralDisplay = ({ code }) => {
 
-    copyToClipboard = (e) => {
-        this.state.code.select();
+    const copyToClipboard = (e) => {
+        code.select();
         document.execCommand('copy');
-        
+
     }
 
-    render() {
-        return (
-            <div className="ReferralDisplay">
-                <h3>{this.state.code}</h3>
-                <Button onClick={() => {navigator.clipboard.writeText(this.state.code)}}>Copy</Button>
-            </div>
-        )
-    }
+    return (
+        <div className="ReferralDisplay">
+            <h3>{code}</h3>
+            <Button onClick={() => { navigator.clipboard.writeText(code) }}>Copy</Button>
+        </div>
+    );
 }
+
+export default ReferralDisplay;
