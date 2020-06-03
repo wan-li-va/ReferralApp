@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 import '../styling/Header.css'
 
-const Header = () => {
+const Header = props => {
+    const [redirect, setRedirect] = useState(false);
+
     const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
     return (
         <div className="Header">
@@ -12,7 +15,16 @@ const Header = () => {
             {/* <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4> */}
             <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
             <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
-            <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link>
+            {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
+            {props.signedIn ?
+                <Button onClick={() => {
+                    setRedirect(true);
+                    return props.handleSignOut
+                }}>Sign Out</Button>
+                : <Button onClick={() => {
+                    setRedirect(true);
+                }}>Sign In</Button>}
+            {redirect ? <Redirect to='/ReferralApp/' /> : ""}
             {/* <Link className="HeaderLink" to="/ReferralApp/about"><Button style={buttonStyle}>About Us</Button></Link>
             <Link className="HeaderLink" to="/ReferralApp/faq"><Button style={buttonStyle}>FAQ</Button></Link>
             <Link className="HeaderLink" to="/ReferralApp/dashboard"><Button style={buttonStyle}>Dashboard</Button></Link> */}

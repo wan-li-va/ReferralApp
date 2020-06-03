@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard.js';
 import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +14,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "3"
+      id: "3",
+      signedIn: false
     }
   }
 
@@ -24,10 +26,19 @@ class App extends Component {
       firebase.user(id).once('value')
         .then(snapshot => {
           let userObj = snapshot.val();
-          this.setState({ authUser: userObj });
+          this.setState({ authUser: userObj, signedIn: true });
         })
         .catch(err => console.log(err))
     }
+  }
+
+  handleSignOut = () => {
+    this.setState({
+      id: "3",
+      signedIn: false,
+      authUser: null
+    })
+    return <Redirect to='/ReferralApp/' />
   }
 
   setUser = (uid) => {
@@ -41,7 +52,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
+          <Header signedIn={this.state.signedIn} handleSignOut={() => this.handleSignOut()} />
           <Switch>
             <Route path="/ReferralApp/dashboard" component={Dashboard} />
             <Route path="/ReferralApp/about" component={AboutUs} />
