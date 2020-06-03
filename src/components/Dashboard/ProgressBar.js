@@ -2,11 +2,7 @@ import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './ProgressBar.css';
 
-const ProgressComponent = (props) => {
-    const {
-        numReferrals,
-        nextAchievement
-    } = props;
+const ProgressComponent = ({ numReferrals, nextAchievement }) => {
     let pct = (numReferrals / nextAchievement) * 100;
     let variant = "info";
     let message = (nextAchievement - numReferrals) + " ";
