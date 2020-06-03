@@ -10,7 +10,6 @@ const Auth = props => {
     const [email, setEmail] = useState("");
     const [isNewUser, setIsNewUser] = useState(false);
     const [show, setShow] = useState(false);
-    const [signedIn, setSignedIn] = useState(false);
     const target = useRef(null);
 
     const handleSubmit = (e) => {
@@ -38,7 +37,6 @@ const Auth = props => {
 
     const handleOldUser = (uid) => {
         props.setUser(uid);
-        setSignedIn(true);
     }
 
     const checkRefCode = (email, refCode) => {
@@ -91,7 +89,6 @@ const Auth = props => {
                     firebase.user(1).update(userArr);
                 })
             props.setUser(id);
-            setSignedIn(true);
         }
     }
 
@@ -116,7 +113,7 @@ const Auth = props => {
 
     return (
         <div>
-            {signedIn ? <Redirect to='/ReferralApp/dashboard' />
+            {props.signedIn ? <Redirect to='/ReferralApp/dashboard' />
                 : isNewUser ? renderNewUserForm()
                     : <Form onSubmit={event => (handleSubmit(event))}>
                         <Form.Group controlId='formEmail' >

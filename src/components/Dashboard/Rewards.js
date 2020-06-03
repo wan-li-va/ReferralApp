@@ -2,7 +2,6 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 
 function calculateRewards(rewards, referralAmt) {
-    console.log(rewards)
 
     let achieved = [];
     for (let i = 1; i <= referralAmt; i++) {

@@ -1,58 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
 import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: "3"
-    }
-  }
+const App = ({ firebase }) => {
+  const [id, setID] = useState('3');
+  const [signedIn, setSignedIn] = useState(false);
+  const [authUser, setAuthUser] = useState({})
 
-  componentDidUpdate = (prevState) => {
-    const { firebase } = this.props;
-    const { id } = this.state;
-    if (id !== '3' && prevState.id === id) {
+  useEffect(() => {
+    if (id !== '3') {
       firebase.user(id).once('value')
         .then(snapshot => {
           let userObj = snapshot.val();
-          this.setState({ authUser: userObj });
+          setAuthUser(userObj);
+          setSignedIn(true);
         })
         .catch(err => console.log(err))
     }
+  }, [id])
+
+  const handleSignOut = () => {
+    setID("3");
+    setSignedIn(false);
+    setAuthUser({});
+    return <Redirect to='/ReferralApp/' />
   }
 
-  setUser = (uid) => {
-    this.setState({
-      id: uid
-    })
+  const setUser = (uid) => {
+    setID(uid);
+    setSignedIn(true);
   }
 
 
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Header />
-          <Switch>
-            <Route path="/ReferralApp/dashboard" component={Dashboard} />
-            <Route path="/ReferralApp/about" component={AboutUs} />
-            <Route path="/ReferralApp/faq" component={FAQ} />
-            <Route path="/ReferralApp/" exact >
-              <Auth setUser={uid => this.setUser(uid)} />
-            </Route>
-          </Switch>
-        </div>
-      </Router >
-    );
-  }
+  return (
+    <Router>
+      <div className="App">
+        <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} />
+        <Switch>
+          <Route path="/ReferralApp/dashboard" component={Dashboard} />
+          <Route path="/ReferralApp/about" component={AboutUs} />
+          <Route path="/ReferralApp/faq" component={FAQ} />
+          <Route path="/ReferralApp/" exact >
+            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+          </Route>
+        </Switch>
+      </div>
+    </Router >
+  );
+
 }
 export default withFirebase(App);
