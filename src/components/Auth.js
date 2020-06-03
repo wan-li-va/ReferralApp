@@ -116,7 +116,7 @@ const Auth = props => {
 
     return (
         <div>
-            {signedIn ? <Redirect to='/dashboard' />
+            {signedIn ? <Redirect to='/ReferralApp/dashboard' />
                 : isNewUser ? renderNewUserForm()
                     : <Form onSubmit={event => (handleSubmit(event))}>
                         <Form.Group controlId='formEmail' >
