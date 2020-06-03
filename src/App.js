@@ -4,6 +4,11 @@ import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
 import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './components/Login.js';
+import AboutUs from './components/AboutUs.js';
+import FAQ from './components/FAQ.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   constructor(props) {
@@ -35,12 +40,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 style={{ textAlign: "center" }}>Somebirds</h1>
-        {/* <Header />
-        <Dashboard /> */}
-        <Auth setUser={uid => this.setUser(uid)} />
-      </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route path="/ReferralApp/dashboard" component={Dashboard} />
+            <Route path="/ReferralApp/about" component={AboutUs} />
+            <Route path="/ReferralApp/faq" component={FAQ} />
+            <Route path="/ReferralApp/" exact >
+              <Auth setUser={uid => setUser(uid)} />
+            </Route>
+          </Switch>
+        </div>
+      </Router >
     );
   }
 }

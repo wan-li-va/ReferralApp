@@ -1,0 +1,22 @@
+.Dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.displayMainMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.displayProgress {
+    display: flex;
+    flex-direction: row;
+}
+
+.Rewards {
+    margin-right: 10vw;
+}
+
+.ReferralDisplay {
+    margin-bottom: 5vh;
+}
