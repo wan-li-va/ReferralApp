@@ -4,7 +4,7 @@ import '../styling/InfoPages.css';
 const aboutUs = () => {
   return (
     <div className="page">
-      <img className="environment-img" src={require('../environmentally-friendly.png')}></img>
+      <img className="environment-img" src={require('../assets/images/environmentally-friendly.png')}></img>
       <h2>Who is ReSHOE?</h2>
       <h5>We give people superpowers.</h5>
       <p>Have you ever thought that it was possible to clean the earth as you walked? To help children in need with each step?
@@ -17,7 +17,7 @@ const aboutUs = () => {
       our policies can further benefit the environment while satisfying our customers.
       </p>
 
-      <img className="shoes" src={require('../amazon-fakes.png')} align="left"></img>
+      <img className="shoes" src={require('../assets/images/amazon-fakes.png')} align="left"></img>
       <h2>What are the benefits of ReSHOE?</h2>
       <h5>We seek to provide the most comfortable, fitting, and flexible shoes to our consumers while improving the world, one shoe
         at a time. </h5>
