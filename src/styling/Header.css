@@ -4,14 +4,16 @@
     padding-bottom: 2vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
+    justify-content: start;
+    /* vertical-align: center; */
+    align-items: center;
     width: 100%
 }
 
 .Title {
     margin-right: 5vw;
     height: 100px;
+    margin-left: 30px;
 }
 
 .SmallTitle {
@@ -24,12 +26,12 @@
 }
 
 .HeaderLink {
-    /* font-style: bold;
-    background-color: #FFE521;
+    font-style: bold;
+    /* background-color: #FFE521; */
     padding: 1vw;
     margin-right: 1vw;
     color: #01236F;
-    background: #FFE521; */
+    /* background: #FFE521; */
 }
 
 .Logo {
@@ -43,6 +45,8 @@
 
     .SmallTitle {
         display: block;
-        height: 70px;
+        height: 50px;
+        margin-left: 10px;
+        margin-bottom: 0;
     }
 }
