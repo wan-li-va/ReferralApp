@@ -16,8 +16,8 @@ const Header = props => {
 
     return (
         <div className="Header">
-            <h1 className="Title"><img className="Logo" src={require('../assembled.png')}></img></h1>
-            <h1 className="SmallTitle"><img className="Logo" src={require('../assembled-small.png')}></img></h1>
+            <h1 className="Title"><img className="Logo" src={require('../assets/images/assembled.png')}></img></h1>
+            <h1 className="SmallTitle"><img className="Logo" src={require('../assets/images/assembled-small.png')}></img></h1>
             <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
             <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
             {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
