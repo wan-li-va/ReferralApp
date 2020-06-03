@@ -5,7 +5,6 @@ import Dashboard from './components/Dashboard.js';
 import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './components/Login.js';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
