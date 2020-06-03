@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -6,6 +6,11 @@ import '../styling/Header.css'
 
 const Header = props => {
     const [redirect, setRedirect] = useState(false);
+    const [signedIn, setSignedIn] = useState(false);
+
+    useEffect(() => {
+        setSignedIn(props.signedIn);
+    }, [props.signedIn])
 
     const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
     return (
@@ -15,8 +20,8 @@ const Header = props => {
             {/* <h4 className="Subtitle">Responsibly Show Hoo Owns the Environment</h4> */}
             <Link className="HeaderLink" to="/ReferralApp/about">About Us</Link>
             <Link className="HeaderLink" to="/ReferralApp/faq">FAQ</Link>
-            {props.signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
-            {props.signedIn ?
+            {signedIn ? <Link className="HeaderLink" to="/ReferralApp/dashboard">Dashboard</Link> : ""}
+            {signedIn ?
                 <Button onClick={() => {
                     setRedirect(true);
                     return props.handleSignOut
