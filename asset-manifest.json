@@ -1,30 +1,32 @@
 {
   "files": {
-    "main.css": "/ReferralApp/static/css/main.8037028b.chunk.css",
-    "main.js": "/ReferralApp/static/js/main.51097289.chunk.js",
-    "main.js.map": "/ReferralApp/static/js/main.51097289.chunk.js.map",
+    "main.css": "/ReferralApp/static/css/main.bc8dbbca.chunk.css",
+    "main.js": "/ReferralApp/static/js/main.4f8373dc.chunk.js",
+    "main.js.map": "/ReferralApp/static/js/main.4f8373dc.chunk.js.map",
     "runtime-main.js": "/ReferralApp/static/js/runtime-main.dc668e0c.js",
     "runtime-main.js.map": "/ReferralApp/static/js/runtime-main.dc668e0c.js.map",
     "static/css/2.09d1976d.chunk.css": "/ReferralApp/static/css/2.09d1976d.chunk.css",
-    "static/js/2.ae071e02.chunk.js": "/ReferralApp/static/js/2.ae071e02.chunk.js",
-    "static/js/2.ae071e02.chunk.js.map": "/ReferralApp/static/js/2.ae071e02.chunk.js.map",
+    "static/js/2.fa46774f.chunk.js": "/ReferralApp/static/js/2.fa46774f.chunk.js",
+    "static/js/2.fa46774f.chunk.js.map": "/ReferralApp/static/js/2.fa46774f.chunk.js.map",
     "index.html": "/ReferralApp/index.html",
-    "precache-manifest.d2d866616aeb4c2ea3697d3e33cbeadf.js": "/ReferralApp/precache-manifest.d2d866616aeb4c2ea3697d3e33cbeadf.js",
+    "precache-manifest.42b8e8d6b8fa842edf7f251ca4db5aa8.js": "/ReferralApp/precache-manifest.42b8e8d6b8fa842edf7f251ca4db5aa8.js",
     "service-worker.js": "/ReferralApp/service-worker.js",
     "static/css/2.09d1976d.chunk.css.map": "/ReferralApp/static/css/2.09d1976d.chunk.css.map",
-    "static/css/main.8037028b.chunk.css.map": "/ReferralApp/static/css/main.8037028b.chunk.css.map",
-    "static/js/2.ae071e02.chunk.js.LICENSE.txt": "/ReferralApp/static/js/2.ae071e02.chunk.js.LICENSE.txt",
+    "static/css/main.bc8dbbca.chunk.css.map": "/ReferralApp/static/css/main.bc8dbbca.chunk.css.map",
+    "static/js/2.fa46774f.chunk.js.LICENSE.txt": "/ReferralApp/static/js/2.fa46774f.chunk.js.LICENSE.txt",
+    "static/media/amazon-fakes.png": "/ReferralApp/static/media/amazon-fakes.3958eb6f.png",
     "static/media/assembled-small.png": "/ReferralApp/static/media/assembled-small.c951a50c.png",
     "static/media/assembled.png": "/ReferralApp/static/media/assembled.ecf2609b.png",
+    "static/media/environmentally-friendly.png": "/ReferralApp/static/media/environmentally-friendly.b4261a06.png",
     "static/media/facebook.ico": "/ReferralApp/static/media/facebook.4022e4f6.ico",
     "static/media/instagram.ico": "/ReferralApp/static/media/instagram.7cea17bc.ico",
-    "static/media/twitter.svg": "/ReferralApp/static/media/twitter.ba0dc499.svg"
+    "static/media/twitter.svg": "/ReferralApp/static/media/twitter.7b1ddd91.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.dc668e0c.js",
     "static/css/2.09d1976d.chunk.css",
-    "static/js/2.ae071e02.chunk.js",
-    "static/css/main.8037028b.chunk.css",
-    "static/js/main.51097289.chunk.js"
+    "static/js/2.fa46774f.chunk.js",
+    "static/css/main.bc8dbbca.chunk.css",
+    "static/js/main.4f8373dc.chunk.js"
   ]
 }
