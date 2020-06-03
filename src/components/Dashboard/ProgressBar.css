@@ -1,0 +1,24 @@
+.left-label {
+    grid-area: l;
+    text-align: left;
+}
+
+.right-label {
+    /* float: right; */
+    grid-area: r;
+    text-align: right;
+}
+
+.center-label {
+    text-align: center;
+    grid-area: m;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.labels {
+    display: grid;
+    grid-template-areas: "l m r";
+}

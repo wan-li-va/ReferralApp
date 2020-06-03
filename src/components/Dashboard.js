@@ -4,6 +4,7 @@ import ReferralDisplay from './Dashboard/ReferralDisplay.js';
 import Rewards from './Dashboard/Rewards.js';
 import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
+import '../styling/Dashboard.css';
 
 
 
@@ -15,7 +16,7 @@ export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numReferrals: 26,
+            numReferrals: 8,
             nextAchievement: 10,
             referralCode: "",
             hasShared: false,
@@ -51,10 +52,21 @@ export default class Dashboard extends Component {
         {name: "Free pair of shoes on the house!", numRequired: 100}  
     ]
 
+
     this.setState({
         rewards: rewards 
     })
     
+    }
+
+    handleSocialShare = () => {
+        this.setState(prevState => {
+            if (!prevState.hasShared)
+                return {
+                    numReferrals: prevState.numReferrals + 1,
+                    hasShared: true
+                }
+        })
     }
 
     render() {
@@ -63,19 +75,23 @@ export default class Dashboard extends Component {
         } = this.props;
 
         return (
-            <div>
-                Dashboard
-                <ProgressBar
-                    numReferrals={this.state.numReferrals}
-                    nextAchievement={this.state.nextAchievement} />
-                <ReferralDisplay code={this.state.referralCode} />
-                <Rewards rewards={this.state.rewards} numReferrals={this.state.numReferrals} nextAchievement={this.state.nextAchievement}/>
-                <Social
-                    referralCode={this.state.referralCode}
-                    hasShared={this.state.hasShared} />
-                <NextReward
-                    nextAchievement={this.state.nextAchievement}
-                    rewards={this.state.rewards} />
+            <div className="Dashboard">
+                <Rewards classname="Rewards" rewards={this.state.rewards} />
+                <div className="displayMainPanel">
+                    <ReferralDisplay className="ReferralDisplay" code={this.state.referralCode} />
+                    <Social
+                        handleSocialShare={this.handleSocialShare}
+                        referralCode={this.state.referralCode}
+                        hasShared={this.state.hasShared} />
+                    <div className="displayProgress">
+                        <ProgressBar
+                            numReferrals={this.state.numReferrals}
+                            nextAchievement={this.state.nextAchievement} />
+                        <NextReward
+                            nextAchievement={this.state.nextAchievement}
+                            rewards={this.state.rewards} />
+                    </div>
+                </div>
             </div>
         )
     }
