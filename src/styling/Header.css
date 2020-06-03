@@ -1,5 +1,5 @@
 .Header {
-    background-color: lightgreen;
+    background-color: #8C8B8C;
     padding-top: 3vh;
     padding-bottom: 2vh;
     display: flex;
@@ -11,6 +11,11 @@
 
 .Title {
     margin-right: 5vw;
+    height: 100px;
+}
+
+.SmallTitle {
+    display: none;
 }
 
 .Subtitle {
@@ -19,8 +24,25 @@
 }
 
 .HeaderLink {
-    font-style: bold;
-    background-color: skyblue;
+    /* font-style: bold;
+    background-color: #FFE521;
     padding: 1vw;
     margin-right: 1vw;
+    color: #01236F;
+    background: #FFE521; */
+}
+
+.Logo {
+    height: inherit;
+}
+
+@media screen and (max-width: 1000px) {
+    .Title {
+        display: none;
+    }
+
+    .SmallTitle {
+        display: block;
+        height: 70px;
+    }
 }
