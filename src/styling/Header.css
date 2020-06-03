@@ -8,8 +8,9 @@
     vertical-align: center;
     align-items: center;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     padding-left: 5px;
+    box-shadow: 3px 1px 8px 10px #BBB;
 }
 
 .Title {

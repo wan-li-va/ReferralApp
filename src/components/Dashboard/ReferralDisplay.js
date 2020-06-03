@@ -12,7 +12,11 @@ const ReferralDisplay = ({ code }) => {
     return (
         <div className="ReferralDisplay">
             <h1 className="Code">{code}</h1>
-            <Button variant="warning" onClick={() => { navigator.clipboard.writeText(code) }}>Copy Code</Button>
+            <Button style={{ backgroundColor: "#FFE521" }}
+                variant="warning"
+                onClick={() => { navigator.clipboard.writeText(code) }}>
+                Copy Code
+            </Button>
         </div>
     );
 }
