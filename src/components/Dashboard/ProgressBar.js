@@ -1,6 +1,6 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import './ProgressBar.css';
+import './styling/ProgressBar.css';
 
 const ProgressComponent = ({ numReferrals, nextAchievement }) => {
     let pct = (numReferrals / nextAchievement) * 100;

@@ -4,7 +4,7 @@ import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
 import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
