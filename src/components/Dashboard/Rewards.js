@@ -1,7 +1,6 @@
 import React from 'react'
 
 function calculateRewards(rewards, referralAmt) {
-    console.log(rewards)
      
     let achieved = [];
     for (let i = 1; i <= referralAmt; i++) {

@@ -76,7 +76,7 @@ export default class Dashboard extends Component {
 
         return (
             <div className="Dashboard">
-                <Rewards classname="Rewards" rewards={this.state.rewards} />
+                <Rewards className="Rewards" rewards={this.state.rewards} />
                 <div className="displayMainPanel">
                     <ReferralDisplay className="ReferralDisplay" code={this.state.referralCode} />
                     <Social
