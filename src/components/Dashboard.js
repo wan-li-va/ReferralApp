@@ -6,7 +6,7 @@ import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
 import '../styling/Dashboard.css';
 
-const Dashboard = ({ userID, firebase }) => {
+const Dashboard = (props) => {
     const [numReferrals, setNumReferrals] = useState(24);
     const [nextAchievement, setNextAchievement] = useState(10);
     const [referralCode, setReferralCode] = useState("CODE");
@@ -32,6 +32,17 @@ const Dashboard = ({ userID, firebase }) => {
     );
     const [userRewards, setUserRewards] = useState(["-Masidibe", "-Masifbe"])
     const [hasShared, setHasShared] = useState(false);
+
+    useEffect(() => {
+        const { user } = props;
+        if (user) {
+            setNumReferrals(user.numReferrals);
+            setReferralCode(user.referralCode);
+            let rewardsArr = user.rewards.filter(reward => reward !== 'dummy')
+            setUserRewards(rewardsArr);
+            setHasShared(user.hasShared);
+        }
+    }, [props.user])
 
     const sortedAchievements = Object.values(rewards).sort(function (a, b) {
         if (a.numRequired < b.numRequired)
