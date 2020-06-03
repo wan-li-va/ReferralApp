@@ -19,7 +19,7 @@ const RenderNewUserForm = props => {
                 <Form.Group controlId='formReferral'>
                     <Form.Label>Enter a referral code if applicable</Form.Label>
                     <Form.Control type='text' placeholder='Enter Referral Code' ref={target} />
-                    <Overlay target={target.current} show={props.show} placement='bottom'>
+                    <Overlay target={target.current} show={props.show} placement='top'>
                         {props => (<Tooltip id='overlay-error' {...props}>
                             Please put in a correct referral code
                         </Tooltip>)}
