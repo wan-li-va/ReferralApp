@@ -8,6 +8,12 @@ const Header = props => {
     const [redirect, setRedirect] = useState(false);
     const buttonStyle = { backgroundColor: "#FFE521", border: "0px", color: "#01236F" };
 
+    useEffect(() => {
+        if (redirect === true) {
+            setRedirect(false);
+        }
+    }, [redirect])
+
     return (
         <div className="Header">
             <h1 className="Title"><img className="Logo" src={require('../assembled.png')}></img></h1>
@@ -19,15 +25,12 @@ const Header = props => {
             {props.signedIn ?
                 <Button onClick={() => {
                     setRedirect(true);
-                    return props.handleSignOut()
+                    props.handleSignOut()
                 }}>Sign Out</Button>
                 : <Button onClick={() => {
                     setRedirect(true);
                 }}>Sign In</Button>}
             {redirect ? <Redirect to='/ReferralApp/' /> : ""}
-            {/* <Link className="HeaderLink" to="/ReferralApp/about"><Button style={buttonStyle}>About Us</Button></Link>
-            <Link className="HeaderLink" to="/ReferralApp/faq"><Button style={buttonStyle}>FAQ</Button></Link>
-            <Link className="HeaderLink" to="/ReferralApp/dashboard"><Button style={buttonStyle}>Dashboard</Button></Link> */}
         </div>
     )
 };
