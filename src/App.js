@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = ({ firebase }) => {
   const [id, setID] = useState('3');
   const [signedIn, setSignedIn] = useState(false);
-  const [authUser, setAuthUser] = useState({})
+  const [authUser, setAuthUser] = useState(null)
 
   useEffect(() => {
     if (id !== '3') {
@@ -30,7 +30,7 @@ const App = ({ firebase }) => {
   const handleSignOut = () => {
     setID("3");
     setSignedIn(false);
-    setAuthUser({});
+    setAuthUser(null);
     return <Redirect to='/ReferralApp/' />
   }
 
@@ -45,9 +45,12 @@ const App = ({ firebase }) => {
       <div className="App">
         <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} />
         <Switch>
-          <Route path="/ReferralApp/dashboard" component={Dashboard} />
+          <Route path="/ReferralApp/dashboard" exact >
+            <Dashboard user={authUser} />
+          </Route>
           <Route path="/ReferralApp/about" component={AboutUs} />
           <Route path="/ReferralApp/faq" component={FAQ} />
+
           <Route path="/ReferralApp/" exact >
             <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
           </Route>
