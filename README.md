@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployed App
 
-This app is deployed at (https://wan-li-va.github.io/ReferralApp/)
+This app is deployed at (https://wan-li-va.github.io/ReferralApp/#/)
 
 ## Available Scripts
 
