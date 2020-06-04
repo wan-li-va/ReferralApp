@@ -106,7 +106,7 @@ const Auth = props => {
 
     return (
         <div>
-            {props.signedIn ? <Redirect to='/dashboard' />
+            {props.signedIn ? (props.isAdmin ? <Redirect to='/admin' /> : <Redirect to='/dashboard' />)
                 : isNewUser ? <RenderNewUserForm show={show} email={email} handleSubmit={e => handleSubmit(e)} />
                     : <RenderNormalForm handleSubmit={e => handleSubmit(e)} />}
         </div>
