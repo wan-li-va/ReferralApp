@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import '../styling/AdminPage.css';
 
-const AdminPage = (props) => {
+const AdminPage = ({ }) => {
     return (
-        <div className="AdminPage">Admin</div>
-    );
+        <div className="AdminPage">
+            Admin
+        </div>
+    )
 }
 export default AdminPage;

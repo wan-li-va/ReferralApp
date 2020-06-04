@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard.js';
 import Auth from './components/Auth';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
-import AdminPage from './components/AdminPage';
+import AdminPage from './components/AdminPage.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -17,7 +17,6 @@ const App = ({ firebase }) => {
   const [signedIn, setSignedIn] = useState(false);
   const [authUser, setAuthUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [instantiated, setInstantiated] = useState(false);
 
   useEffect(() => {
     if (id !== '3') {
@@ -31,7 +30,6 @@ const App = ({ firebase }) => {
         .then(snapshot => {
           let userObj = snapshot.val();
           setAuthUser(userObj);
-          // localUserObj = userObj;
           setSignedIn(true);
         });
       firebase.admins().once('value')
@@ -42,12 +40,6 @@ const App = ({ firebase }) => {
         })
     }
   }, [id])
-
-  // useEffect(() => {
-  //   if (!signedIn) {
-
-  //   }
-  // }, [signedIn])
 
   const handleSignOut = () => {
     setID("3");
