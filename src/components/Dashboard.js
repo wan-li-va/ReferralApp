@@ -41,6 +41,7 @@ const Dashboard = (props) => {
             let rewardsArr = user.rewards.filter(reward => reward !== 'dummy')
             setUserRewards(rewardsArr);
             setHasShared(user.hasShared);
+            setNextAchievement(calcNextAchievement);
         }
     }, [props.user])
 
@@ -61,10 +62,6 @@ const Dashboard = (props) => {
         })
         return sortedAchievements[prevAwards].numRequired
     }
-
-    useEffect(() => {
-        setNextAchievement(calcNextAchievement)
-    }, [])
 
     const handleSocialShare = () => {
         if (!hasShared) {
