@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../styling/AdminPage.css';
 import { withFirebase } from './Firebase';
 import Form from 'react-bootstrap/Form'
 
