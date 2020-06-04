@@ -60,8 +60,7 @@ const Auth = props => {
                             .then(snapshot => {
                                 let userObj = snapshot.val();
                                 firebase.user(id).update({
-                                    numReferrals: userObj.numReferrals + 1,
-                                    hasShared: true
+                                    numReferrals: userObj.numReferrals + 1
                                 })
                             })
                         setShow(false);

@@ -17,15 +17,21 @@ const App = ({ firebase }) => {
 
   useEffect(() => {
     if (id !== '3') {
+      let unsubscribe = firebase.users().on('child_changed',
+        snapshot => {
+          if (id === snapshot.val().id) {
+            setAuthUser(snapshot.val());
+          }
+        })
       firebase.user(id).once('value')
         .then(snapshot => {
           let userObj = snapshot.val();
           setAuthUser(userObj);
+          // localUserObj = userObj;
           setSignedIn(true);
-        })
-        .catch(err => console.log(err))
+        });
     }
-  }, [id, firebase])
+  }, [id])
 
   const handleSignOut = () => {
     setID("3");

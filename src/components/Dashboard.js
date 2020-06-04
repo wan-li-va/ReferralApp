@@ -30,39 +30,11 @@ const Dashboard = (props) => {
             })
     }, [props.user])
 
-    useEffect(() => {
-        const { user } = props;
-        // setRewards(rewards);
-        if (user) {
-            setNumReferrals(user.numReferrals);
-            setReferralCode(user.referralCode);
-            let rewardsArr = user.rewards.filter(reward => reward !== 'dummy')
-            setUserRewards(rewardsArr);
-            setHasShared(user.hasShared);
-            setNextAchievement(calcNextAchievement);
-        }
-    }, [props.user])
-
-    useEffect(() => {
-        const { user } = props;
-        if (user) {
-            const achievements = Object.values(rewards);
-            const keys = Object.keys(rewards);
-            for (let i = 0; i < achievements.length; i++) {
-                if (numReferrals === achievements[i].numRequired) {
-                    const { firebase } = props;
-                    firebase.user(user.id).update({ rewards: [...user.rewards, keys[i]] })
-                    break;
-                }
-            }
-        }
-    }, [props.user, numReferrals])
-
     const calcNextAchievement = () => {
         let prevAwards = 0;
         if (rewards.length > 0) {
             rewards.map(reward => {
-                if (numReferrals > reward.numRequired)
+                if (numReferrals >= reward.numRequired)
                     prevAwards++;
                 return reward
             })
@@ -70,11 +42,48 @@ const Dashboard = (props) => {
         }
     }
 
+    useEffect(() => {
+        const { user } = props;
+        if (user) {
+            setNumReferrals(user.numReferrals);
+            setReferralCode(user.referralCode);
+            let rewardsArr = user.rewards.filter(reward => reward !== 'dummy')
+            setUserRewards(rewardsArr);
+            setHasShared(user.hasShared);
+        }
+    }, [props.user])
+
+    useEffect(() => {
+        setNextAchievement(calcNextAchievement());
+    }, [props.user, rewards])
+
+    useEffect(() => {
+        const { user, firebase } = props;
+        if (user) {
+            firebase.rewards().once('value')
+                .then(snapshot => {
+                    let localRewards = snapshot.val();
+                    console.log(localRewards);
+                    const achievements = Object.values(localRewards);
+                    const keys = Object.keys(localRewards);
+                    console.log(achievements);
+                    for (let i = 0; i < achievements.length; i++) {
+                        console.log(keys[i]);
+                        if (numReferrals === achievements[i].numRequired && !user.rewards.includes(keys[i])) {
+                            console.log(keys[i]);
+                            firebase.user(user.id).update({ rewards: [...user.rewards, keys[i]] })
+                            break;
+                        }
+                    }
+                })
+
+        }
+    }, [numReferrals])
 
     const handleSocialShare = () => {
         if (!hasShared) {
-            setNumReferrals(numReferrals + 1);
-            setHasShared(true);
+            const { firebase, user } = props;
+            firebase.user(user.id).update({ numReferrals: user.numReferrals + 1, hasShared: true });
         }
     }
 
