@@ -5,36 +5,34 @@ import Rewards from './Dashboard/Rewards.js';
 import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
 import '../styling/Dashboard.css';
+import { withFirebase } from './Firebase';
 
 const Dashboard = (props) => {
     const [numReferrals, setNumReferrals] = useState(24);
     const [nextAchievement, setNextAchievement] = useState(10);
     const [referralCode, setReferralCode] = useState("CODE");
-    const [rewards, setRewards] = useState(
-        {
-            "-Masidibe": {
-                name: "added to our exclusive Facebook Group!",
-                numRequired: 10
-            },
-            "-Masifbe": {
-                name: "our brand stickers!",
-                numRequired: 25
-            },
-            "-Masidasdbe": {
-                name: "you get a free t-shirt!",
-                numRequired: 50
-            },
-            "-Masiasefibe": {
-                name: "you get a free pair of shoes, on the house!",
-                numRequired: 100
-            },
-        }
-    );
-    const [userRewards, setUserRewards] = useState(["-Masidibe", "-Masifbe"])
+    const [rewards, setRewards] = useState([]);
+    const [userRewards, setUserRewards] = useState([])
     const [hasShared, setHasShared] = useState(false);
 
     useEffect(() => {
+        const { firebase } = props;
+        firebase.rewards().once('value')
+            .then(snapshot => {
+                setRewards(Object.values(snapshot.val()).sort(function (a, b) {
+                    if (a.numRequired < b.numRequired)
+                        return -1;
+                    else if (a.numRequired > b.numRequired)
+                        return 1;
+                    else
+                        return 0;
+                }));
+            })
+    }, [props.user])
+
+    useEffect(() => {
         const { user } = props;
+        // setRewards(rewards);
         if (user) {
             setNumReferrals(user.numReferrals);
             setReferralCode(user.referralCode);
@@ -45,24 +43,37 @@ const Dashboard = (props) => {
         }
     }, [props.user])
 
-    const sortedAchievements = Object.values(rewards).sort(function (a, b) {
-        if (a.numRequired < b.numRequired)
-            return -1;
-        else if (a.numRequired > b.numRequired)
-            return 1;
-        else
-            return 0;
-    });
+    useEffect(() => {
+        const { user } = props;
+        if (user) {
+            const achievements = Object.values(rewards);
+            const keys = Object.keys(rewards);
+            for (let i = 0; i < achievements.length; i++) {
+                if (numReferrals === achievements[i].numRequired) {
+                    const { firebase } = props;
+                    firebase.user(user.id).update({ rewards: [...user.rewards, keys[i]] })
+                    break;
+                }
+            }
+        }
+    }, [props.user, numReferrals])
 
     const calcNextAchievement = () => {
         let prevAwards = 0;
-        sortedAchievements.map(reward => {
-            if (numReferrals > reward.numRequired)
-                prevAwards++;
-        })
-        return sortedAchievements[prevAwards].numRequired
+        if (rewards.length > 0) {
+            rewards.map(reward => {
+                if (numReferrals > reward.numRequired)
+                    prevAwards++;
+                return reward
+            })
+            return rewards[prevAwards].numRequired
+        }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     const handleSocialShare = () => {
         if (!hasShared) {
             setNumReferrals(numReferrals + 1);
@@ -93,4 +104,4 @@ const Dashboard = (props) => {
         </div>
     );
 }
-export default Dashboard;
+export default withFirebase(Dashboard);

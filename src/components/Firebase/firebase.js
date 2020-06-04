@@ -36,4 +36,10 @@ export default class Firebase {
 
     users = () => this.db.ref('users');
 
+    // *** rewards API ***
+
+    reward = rid => this.db.ref(`rewards/${rid}`);
+
+    rewards = () => this.db.ref('rewards');
+
 }
