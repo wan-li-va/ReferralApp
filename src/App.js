@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { withFirebase } from './components/Firebase';
+
 import Header from './components/Header.js';
 import Dashboard from './components/Dashboard.js';
-import { withFirebase } from './components/Firebase';
 import Auth from './components/Auth';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const App = ({ firebase }) => {
   const [id, setID] = useState('3');
@@ -53,15 +54,16 @@ const App = ({ firebase }) => {
         <Switch>
           <Route path="/about" component={AboutUs} exact />
           <Route path="/faq" component={FAQ} exact />
-
           {signedIn ?
             <Route path='/dashboard' exact>
               <Dashboard user={authUser} />
-            </Route> : <Route path="/" exact> <Auth setUser={uid => setUser(uid)} signedIn={signedIn} /> </Route>}
+            </Route> : <Route path="/"> <Auth setUser={uid => setUser(uid)} signedIn={signedIn} /> </Route>}
+
           {(signedIn && true) ? <Redirect to='/dashboard' /> :
             <Route path="/" exact >
               <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
             </Route>}
+
         </Switch>
       </div>
     </Router >

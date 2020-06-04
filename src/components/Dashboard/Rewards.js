@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-// import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const Rewards = ({ rewards, userRewards }) => {
 

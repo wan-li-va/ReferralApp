@@ -1,5 +1,6 @@
 import React from 'react';
-import './styling/Social.css';
+
+import '../../styling/Social.css';
 
 const Social = ({ handleSocialShare }) => {
     return (

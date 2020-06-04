@@ -64,8 +64,6 @@
 }
 
 .Card {
-    /* outline: #8C8B8C solid 1vh;
-    outline-offset: 1vh; */
     width: 30vw;
     padding: 2vh 1vw 2vh 1vw;
     align-items: center;

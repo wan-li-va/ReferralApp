@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+
 import ProgressBar from './Dashboard/ProgressBar.js';
 import ReferralDisplay from './Dashboard/ReferralDisplay.js';
 import Rewards from './Dashboard/Rewards.js';
 import Social from './Dashboard/Social.js';
 import NextReward from './Dashboard/NextReward.js';
+
 import '../styling/Dashboard.css';
+
 import { withFirebase } from './Firebase';
 
 const Dashboard = (props) => {
@@ -17,7 +20,7 @@ const Dashboard = (props) => {
     const [hasShared, setHasShared] = useState(false);
 
     useEffect(() => {
-        const { firebase } = props;
+        const { user, firebase } = props;
         firebase.rewards().once('value')
             .then(snapshot => {
                 setRewards(Object.values(snapshot.val()).sort(function (a, b) {
@@ -29,22 +32,6 @@ const Dashboard = (props) => {
                         return 0;
                 }));
             })
-    }, [props.user])
-
-    const calcNextAchievement = () => {
-        let prevAwards = 0;
-        if (rewards.length > 0) {
-            rewards.map(reward => {
-                if (numReferrals >= reward.numRequired)
-                    prevAwards++;
-                return reward
-            })
-            return rewards[prevAwards].numRequired
-        }
-    }
-
-    useEffect(() => {
-        const { user } = props;
         if (user) {
             setNumReferrals(user.numReferrals);
             setReferralCode(user.referralCode);
@@ -74,9 +61,20 @@ const Dashboard = (props) => {
                         }
                     }
                 })
-
         }
     }, [props.user, numReferrals])
+
+    const calcNextAchievement = () => {
+        let prevAwards = 0;
+        if (rewards.length > 0) {
+            rewards.map(reward => {
+                if (numReferrals >= reward.numRequired)
+                    prevAwards++;
+                return reward
+            })
+            return rewards[prevAwards].numRequired
+        }
+    }
 
     const handleSocialShare = () => {
         if (!hasShared) {

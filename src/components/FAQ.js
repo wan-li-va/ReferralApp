@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../styling/InfoPages.css';
 
 const faq = () => {
@@ -8,7 +9,7 @@ const faq = () => {
       <h4>Q: How do I get points?</h4>
       <p>
         A: One referral gets you one point,
-        and sharing on socoal media also gets
+        and sharing on social media also gets
         you one point.
         </p>
       <h4>Q: What counts as a referral?</h4>
