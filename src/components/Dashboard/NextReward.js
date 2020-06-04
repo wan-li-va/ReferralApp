@@ -19,7 +19,7 @@ const NextReward = ({ rewards, nextAchievement, numReferrals }) => {
             referrals = "referral";
         return (
             <div>
-                Just {num} more {referrals} until you get {nextReward(rewards, nextAchievement).name}
+                Just {num} more {referrals} until you get {nextReward(rewards, nextAchievement).name}!
             </div>
         )
     }

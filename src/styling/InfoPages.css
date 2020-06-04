@@ -9,6 +9,7 @@
     width: 100%;
     /* align-items: ; */
     /* background-color: #DDD; */
+    /* background-image: url('https://c1.wallpaperflare.com/preview/80/511/734/shoe-fashion-sneaker-leg.jpg'); */
 }
 
 @media screen and (max-width: 1000px) {
@@ -26,4 +27,18 @@
 .shoes {
     min-width: 20%;
     max-width: 40%;
+}
+
+.faq {
+    background-image: url('https://c1.wallpaperflare.com/preview/80/511/734/shoe-fashion-sneaker-leg.jpg');
+    color: black;
+    width: 100vw;
+    height: 80vh;
+    margin-left: -10vw;
+    
+}
+
+.text {
+    background-color: rgba(221, 221, 221, 0.7);
+    padding: 2vh 2vw 0.2vw 2vw;
 }

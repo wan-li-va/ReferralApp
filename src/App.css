@@ -1,3 +1,8 @@
 .App {
-    background-color: #DDD;
+    /* background-color: #DDD; */
+    background-image: url('https://ae01.alicdn.com/kf/HTB1ulidktfJ8KJjy0Feq6xKEXXax/MIUBU-Men-Shoes-Men-Casual-Shoes-Summer-Breathable-Lace-up-Flats-Fashion-Light-Male-Footwear-Big.jpg');
+}
+
+.AdminPage {
+    padding-top: 20vh;
 }

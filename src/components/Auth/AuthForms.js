@@ -31,15 +31,24 @@ const RenderNewUserForm = props => {
     );
 }
 
-const RenderNormalForm = props => (
-    <div className="form-page">
-        <Form className="form" onSubmit={event => props.handleSubmit(event)}>
-            <Form.Group controlId='formEmail' >
-                <Form.Label>Enter your email address!</Form.Label>
-                <Form.Control className="email-form" type='email' placeholder='Enter email' />
-            </Form.Group>
-            <Button variant='secondary' type='submit'>Submit!</Button>
-        </Form>
-    </div>
-);
+const RenderNormalForm = props => {
+    const target = useRef(null);
+
+    return (
+        <div className="form-page">
+            <Form className="form" onSubmit={event => props.handleSubmit(event)}>
+                <Form.Group controlId='formEmail' >
+                    <Form.Label>Enter your email address!</Form.Label>
+                    <Form.Control className="email-form" type='email' placeholder='Enter email' />
+                    <Overlay target={target.current} show={props.show} placement='top'>
+                        {props => (<Tooltip id='overlay-error' {...props}>
+                            Please put in an email!
+                        </Tooltip>)}
+                    </Overlay >
+                </Form.Group>
+                <Button variant='secondary' type='submit'>Submit!</Button>
+            </Form>
+        </div>
+    );
+}
 export { RenderNewUserForm, RenderNormalForm };

@@ -72,7 +72,10 @@ const Dashboard = (props) => {
                     prevAwards++;
                 return reward
             })
-            return rewards[prevAwards].numRequired
+            if (prevAwards < rewards.length)
+                return rewards[prevAwards].numRequired;
+            else
+                return rewards[rewards.length - 1].numRequired;
         }
     }
 

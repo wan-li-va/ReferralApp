@@ -11,10 +11,13 @@
     display: flex;
     flex-direction: column;
     outline: #8C8B8C solid 0.7vw;
-    padding: 5vh 10vw 5vh 10vw;
+    padding: 3vh 6vw 3vh 6vw;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: #01236F;
+    color: white;
+    /* background-image: url('../../shoesbg.jpg'); */
 }
 
 @media screen and (max-width: 1000px) {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withFirebase } from './Firebase';
 import { Redirect } from 'react-router-dom';
+
 import { RenderNewUserForm, RenderNormalForm } from './Auth/AuthForms';
 
 const Auth = props => {
@@ -15,11 +16,22 @@ const Auth = props => {
         const { firebase } = props;
         e.preventDefault();
         let email = e.target.elements.formEmail.value;
+        if (email === '') {
+            setShow(true);
+            return;
+        } else {
+            setShow(false);
+        }
         setEmail(email);
         if (!isNewUser)
-            firebase.user(1).once('value')
+            firebase.users().once('value')
                 .then(snapshot => {
-                    let userArr = snapshot.val();
+                    let userObjs = snapshot.val();
+                    let userArr = [];
+                    for (let key in userObjs) {
+                        if (key !== 1)
+                            userArr.push(userObjs[key])
+                    }
                     let user = userArr.filter(userObj => userObj.email === email)
                     if (user[0]) {
                         handleOldUser(user[0].id);
@@ -50,10 +62,17 @@ const Auth = props => {
     const checkRefCode = (email, refCode) => {
         const { firebase } = props;
         if (refCode !== "")
-            firebase.user(1).once('value')
+            firebase.users().once('value')
                 .then(snapshot => {
-                    let userArr = snapshot.val();
-                    let user = userArr.filter(userObj => userObj.id.substring(3) === refCode);
+                    let userObjs = snapshot.val();
+                    let userArr = [];
+                    console.log(userObjs)
+                    for (let key in userObjs) {
+                        if (key !== "1")
+                            userArr.push(userObjs[key])
+                    }
+                    console.log(userArr);
+                    let user = userArr.filter(userObj => userObj.referralCode === refCode);
                     if (user[0]) {
                         let id = user[0].id
                         firebase.user(id).once('value')
@@ -90,22 +109,22 @@ const Auth = props => {
             let userObj = { email: email, id: id, referralCode: id.substring(3), numReferrals: 0, hasShared: false, rewards: { 0: 'dummy' } };
             firebase.user(id)
                 .set(userObj)
-            firebase.user(1).once('value')
-                .then(snapshot => {
-                    let users = snapshot.val();
-                    let userArr = [];
-                    for (let key in users) {
-                        userArr.push(users[key])
-                    }
-                    userArr = [...userArr, { email: email, id: id }];
-                    firebase.user(1).update(userArr);
-                })
+            // firebase.users().once('value')
+            //     .then(snapshot => {
+            //         let users = snapshot.val();
+            //         let userArr = [];
+            //         for (let key in users) {
+            //             userArr.push(users[key])
+            //         }
+            //         userArr = [...userArr, { email: email, id: id }];
+            //         firebase.user(1).update(userArr);
+            //     })
             props.setUser(id);
         }
     }
 
     return (
-        <div>
+        <div className='Login'>
             {props.signedIn ? (props.isAdmin ? <Redirect to='/admin' /> : <Redirect to='/dashboard' />)
                 : isNewUser ? <RenderNewUserForm show={show} email={email} handleSubmit={e => handleSubmit(e)} />
                     : <RenderNormalForm handleSubmit={e => handleSubmit(e)} />}

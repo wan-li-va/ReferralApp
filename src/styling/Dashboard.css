@@ -4,6 +4,8 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    /* background-color: #DDD; */
+    background-image: url('https://i.pinimg.com/originals/6d/df/89/6ddf89a95cc31286387b11c64c1991a8.jpg');
 }
 
 .displayMainPanel {

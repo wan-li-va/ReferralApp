@@ -18,6 +18,7 @@ const App = ({ firebase }) => {
   const [authUser, setAuthUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);             // change later
   const [admins, setAdmins] = useState([]);
+  const [hasRedirected, setHasRedirected] = useState(false);
 
   useEffect(() => {
     if (id !== '3') {
@@ -36,7 +37,6 @@ const App = ({ firebase }) => {
         .then(snapshot => {
           let userObj = snapshot.val();
           setAuthUser(userObj);
-          // localUserObj = userObj;
           setSignedIn(true);
         });
       firebase.admins().once('value')
@@ -53,12 +53,50 @@ const App = ({ firebase }) => {
     setID("3");
     setSignedIn(false);
     setAuthUser(null);
+    setIsAdmin(false);
+    setHasRedirected(false);
     return <Redirect to='/' />
   }
 
   const setUser = (uid) => {
     setID(uid);
     setSignedIn(true);
+  }
+
+  const handleRedirect = () => {
+    if (signedIn) {
+      if (isAdmin) {
+        // if (hasRedirected) {
+        return <div>
+          <Route path='/admin' exact>
+            <AdminPage user={authUser} admins={admins} />
+          </Route>
+          <Route path='/dashboard'>
+            <Dashboard user={authUser} />
+          </Route>
+          <Route path="/" exact >
+            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+          </Route>
+          {(hasRedirected) ? <div>{console.log("hasRedirected = true")}</div> :
+            <div><Redirect to='/admin' /> {console.log("hasRedirected = false")} {setHasRedirected(true)} </div>}
+        </div>
+      } else {
+        return <div>
+          <Route path='/dashboard'>
+            <Dashboard user={authUser} />
+          </Route>
+          <Route path="/" exact >
+            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+          </Route>
+          <Redirect to='/dashboard' />
+        </div>
+      }
+    } else {
+      return (
+        <Route path="/"  >
+          <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+        </Route>);
+    }
   }
 
   return (
@@ -68,51 +106,7 @@ const App = ({ firebase }) => {
         <Switch>
           <Route path="/about" component={AboutUs} exact />
           <Route path="/faq" component={FAQ} exact />
-          <Route path="/admin">
-            <AdminPage admins={admins} user={authUser} />
-          </Route>
-          {signedIn ?
-            <Route path='/dashboard' exact>
-              <Dashboard user={authUser} />
-            </Route> : <Route path="/"> <Auth setUser={uid => setUser(uid)} signedIn={signedIn} /> </Route>}
-
-          {(signedIn && true) ? <Redirect to='/dashboard' /> :
-            <Route path="/" exact >
-              <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
-            </Route>}
-          {/* <Route path="/about" component={AboutUs} exact />
-          <Route path="/faq" component={FAQ} exact />
-          {signedIn ? <div></div> :
-            <div>
-              <Route path="/admin" exact >
-                <AdminPage user={authUser} admins={admins} />
-              </Route>
-              <Route path='/dashboard' exact>
-                <Dashboard user={authUser} />
-              </Route>
-            </div>}
-          {signedIn ? (isAdmin ?
-            <Redirect to="/admin" /> :
-            <Redirect to="/dashboard" />
-          ) : <Route path="/">
-              <Auth setUser={uid => setUser(uid)} signedIn={signedIn} isAdmin={isAdmin} />
-            </Route> */}
-          }
-          {/* <Route path="/about" component={AboutUs} exact />
-          <Route path="/faq" component={FAQ} exact />
-          <Route path='/dashboard' exact></Route>
-            <Dashboard user={authUser} />
-          </Route>
-          <Route path="/admin" exact >
-            <AdminPage user={authUser} />
-          </Route>
-          <Route path="/">
-            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} isAdmin={isAdmin} />
-          </Route>
-          {signedIn ? (isAdmin ?
-            <Redirect to='/admin' /> :
-            <Redirect to='/dashboard' />)
-            : <Redirect to='/' />} */}
+          {handleRedirect()}
         </Switch>
       </div>
     </Router >
