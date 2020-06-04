@@ -7,10 +7,8 @@ const AdminPage = (props) => {
     const [isGlobalAdmin, setGlobalAdmin] = useState(false);
     const [users, setUsers] = useState({});
     const [admins, setAdmins] = useState({});
-    // const [user, setUser] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
     const [editedObject, setEditedObject] = useState({});
-    const [dummy, setDummy] = useState({ text: "hello world" });
 
     useEffect(() => {
         const { user, admins } = props;
@@ -48,25 +46,8 @@ const AdminPage = (props) => {
         setSelectedUser(null);
     }
 
-    // const handleCreateUser = () => {
-    //     const keys = Object.keys(props.user);
-    //     // console.log(keys);
-    //     let emptyObj = {};
-    //     for (let i = 0; i < keys.length; i++) {
-    //         emptyObj[keys[i]] = "";
-    //         // console.log()
-    //     }
-    //     // console.log(emptyObj);
-    //     setEditedObject(emptyObj);
-    // }
-
     const handleDeleteUser = () => {
         props.firebase.user(selectedUser).remove();
-    }
-
-    const handleDummy = (e) => {
-        const val = e.target.value;
-        setDummy({ "text": val });
     }
 
     return (
@@ -84,7 +65,6 @@ const AdminPage = (props) => {
                     })}
             </Form.Control>
             <div>
-                <input onChange={handleDummy} value={dummy.text}></input>
                 {selectedUser && users && Object.keys(editedObject).map(key => {
                     console.log(editedObject);
                     console.log(editedObject[key]);
