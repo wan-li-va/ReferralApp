@@ -64,14 +64,11 @@ const Dashboard = (props) => {
             firebase.rewards().once('value')
                 .then(snapshot => {
                     let localRewards = snapshot.val();
-                    console.log(localRewards);
+                    setRewardsJson(localRewards);
                     const achievements = Object.values(localRewards);
                     const keys = Object.keys(localRewards);
-                    console.log(achievements);
                     for (let i = 0; i < achievements.length; i++) {
-                        console.log(keys[i]);
                         if (numReferrals === achievements[i].numRequired && !user.rewards.includes(keys[i])) {
-                            console.log(keys[i]);
                             firebase.user(user.id).update({ rewards: [...user.rewards, keys[i]] })
                             break;
                         }
@@ -79,7 +76,7 @@ const Dashboard = (props) => {
                 })
 
         }
-    }, [numReferrals])
+    }, [props.user, numReferrals])
 
     const handleSocialShare = () => {
         if (!hasShared) {
@@ -90,7 +87,7 @@ const Dashboard = (props) => {
 
     return (
         <div className="Dashboard">
-            <Rewards classname="Rewards" rewards={rewards} userRewards={userRewards} />
+            <Rewards classname="Rewards" rewards={rewardsJson} userRewards={userRewards} />
             <div className="displayMainPanel">
                 <ReferralDisplay className="ReferralDisplay" code={referralCode} />
                 <Social
