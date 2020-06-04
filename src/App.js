@@ -16,9 +16,8 @@ const App = ({ firebase }) => {
   const [id, setID] = useState('3');
   const [signedIn, setSignedIn] = useState(false);
   const [authUser, setAuthUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);             // change later
+  const [isAdmin, setIsAdmin] = useState(false);
   const [admins, setAdmins] = useState([]);
-  const [hasRedirected, setHasRedirected] = useState(false);
 
   useEffect(() => {
     if (id !== '3') {
@@ -30,7 +29,6 @@ const App = ({ firebase }) => {
         })
       firebase.admins().once('value')
         .then(snapshot => {
-          console.log(snapshot.val());
           setAdmins(snapshot.val());
         });
       firebase.user(id).once('value')
@@ -42,7 +40,6 @@ const App = ({ firebase }) => {
       firebase.admins().once('value')
         .then(snapshot => {
           let adminArr = snapshot.val();
-          console.log(adminArr.includes(id))
           if (adminArr.includes(id))
             setIsAdmin(true);
         })
@@ -54,7 +51,6 @@ const App = ({ firebase }) => {
     setSignedIn(false);
     setAuthUser(null);
     setIsAdmin(false);
-    setHasRedirected(false);
     return <Redirect to='/' />
   }
 
@@ -66,7 +62,6 @@ const App = ({ firebase }) => {
   const handleRedirect = () => {
     if (signedIn) {
       if (isAdmin) {
-        // if (hasRedirected) {
         return <div>
           <Route path='/admin' exact>
             <AdminPage user={authUser} admins={admins} />
@@ -77,8 +72,6 @@ const App = ({ firebase }) => {
           <Route path="/" exact >
             <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
           </Route>
-          {(hasRedirected) ? <div>{console.log("hasRedirected = true")}</div> :
-            <div><Redirect to='/admin' /> {console.log("hasRedirected = false")} {setHasRedirected(true)} </div>}
         </div>
       } else {
         return <div>

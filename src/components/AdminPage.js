@@ -62,17 +62,10 @@ const AdminPage = (props) => {
 
     const handleDeleteUser = () => {
         props.firebase.user(selectedUser).remove();
-        // props.firebase.user(1).once('value')
-        //     .then()
     }
 
     const handleDummy = (e) => {
         const val = e.target.value;
-        // let newObj = dummy;
-        // console.log(dummy);
-        // newObj.text = val
-        // console.log(newObj);
-        // // setDummy(newObj);
         setDummy({ "text": val });
     }
 
