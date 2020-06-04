@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard.js';
 import Auth from './components/Auth';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
+import AdminPage from './components/AdminPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -14,7 +15,9 @@ import './App.css';
 const App = ({ firebase }) => {
   const [id, setID] = useState('3');
   const [signedIn, setSignedIn] = useState(false);
-  const [authUser, setAuthUser] = useState(null)
+  const [authUser, setAuthUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [instantiated, setInstantiated] = useState(false);
 
   useEffect(() => {
     if (id !== '3') {
@@ -31,13 +34,26 @@ const App = ({ firebase }) => {
           // localUserObj = userObj;
           setSignedIn(true);
         });
+      firebase.admins().once('value')
+        .then(snapshot => {
+          let adminArr = snapshot.val();
+          if (adminArr.includes(id))
+            setIsAdmin(true);
+        })
     }
   }, [id])
+
+  // useEffect(() => {
+  //   if (!signedIn) {
+
+  //   }
+  // }, [signedIn])
 
   const handleSignOut = () => {
     setID("3");
     setSignedIn(false);
     setAuthUser(null);
+    setIsAdmin(false);
     return <Redirect to='/' />
   }
 
@@ -46,24 +62,45 @@ const App = ({ firebase }) => {
     setSignedIn(true);
   }
 
+  const handleRedirect = () => {
+    if (signedIn) {
+      if (isAdmin) {
+        return <div>
+          <Route path='/admin' exact>
+            <AdminPage />
+          </Route>
+          <Route path='/dashboard'>
+            <Dashboard user={authUser} />
+          </Route>
+          <Route path="/" exact >
+            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+          </Route>
+          <Redirect to='/admin' />
+        </div>
+      } else {
+        return <div>
+          <Route path='/dashboard'>
+            <Dashboard user={authUser} />
+          </Route>
+          <Redirect to='/dashboard' />
+        </div>
+      }
+    } else {
+      return (
+        <Route path="/"  >
+          <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+        </Route>);
+    }
+  }
 
   return (
     <Router>
       <div className="App">
-        <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} />
+        <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} isAdmin={isAdmin} />
         <Switch>
           <Route path="/about" component={AboutUs} exact />
           <Route path="/faq" component={FAQ} exact />
-          {signedIn ?
-            <Route path='/dashboard' exact>
-              <Dashboard user={authUser} />
-            </Route> : <Route path="/"> <Auth setUser={uid => setUser(uid)} signedIn={signedIn} /> </Route>}
-
-          {(signedIn && true) ? <Redirect to='/dashboard' /> :
-            <Route path="/" exact >
-              <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
-            </Route>}
-
+          {handleRedirect()}
         </Switch>
       </div>
     </Router >

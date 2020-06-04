@@ -22,14 +22,6 @@ export default class Firebase {
         this.db = app.database();
     }
 
-    // doCreateUserWithEmailAndPassword = (email, password) =>
-    //     this.auth.createUserWithEmailAndPassword(email, password);
-
-    // doSignInWithEmailAndPassword = (email, password) =>
-    //     this.auth.signInWithEmailAndPassword(email, password);
-
-    // doSignOut = () => this.auth.signOut();
-
     // *** User API ***
 
     user = uid => this.db.ref(`users/${uid}`);
@@ -41,5 +33,9 @@ export default class Firebase {
     reward = rid => this.db.ref(`rewards/${rid}`);
 
     rewards = () => this.db.ref('rewards');
+
+    // *** Admin API ***
+
+    admins = () => this.db.ref('admins');
 
 }
