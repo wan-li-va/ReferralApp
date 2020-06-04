@@ -20,6 +20,7 @@ const Header = props => {
             <h1 className="SmallTitle"><img alt="reshoe logo" className="Logo" src={require('../assets/images/assembled-small.png')}></img></h1>
             <Link className="HeaderLink" to="/about">About Us</Link>
             <Link className="HeaderLink" to="/faq">FAQ</Link>
+            <Link className="HeaderLink" to="/admin">Admin Page</Link>
             {props.signedIn ? <Link className="HeaderLink" to="/dashboard">Dashboard</Link> : ""}
             {props.signedIn ?
                 <Button style={{ backgroundColor: "#FFE521" }}

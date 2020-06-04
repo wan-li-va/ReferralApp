@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard.js';
 import Auth from './components/Auth';
 import AboutUs from './components/AboutUs.js';
 import FAQ from './components/FAQ.js';
+import AdminPage from './components/AdminPage.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -14,7 +15,8 @@ import './App.css';
 const App = ({ firebase }) => {
   const [id, setID] = useState('3');
   const [signedIn, setSignedIn] = useState(false);
-  const [authUser, setAuthUser] = useState(null)
+  const [authUser, setAuthUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(true);             // change later
 
   useEffect(() => {
     if (id !== '3') {
@@ -53,6 +55,7 @@ const App = ({ firebase }) => {
         <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} />
         <Switch>
           <Route path="/about" component={AboutUs} exact />
+          <Route path="/admin" component={AdminPage} exact />
           <Route path="/faq" component={FAQ} exact />
           {signedIn ?
             <Route path='/dashboard' exact>
@@ -63,7 +66,6 @@ const App = ({ firebase }) => {
             <Route path="/" exact >
               <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
             </Route>}
-
         </Switch>
       </div>
     </Router >
