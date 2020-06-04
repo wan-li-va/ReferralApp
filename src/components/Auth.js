@@ -106,7 +106,7 @@ const Auth = props => {
 
     return (
         <div>
-            {props.signedIn ? <Redirect to='/ReferralApp/dashboard' />
+            {props.signedIn ? <Redirect to='/dashboard' />
                 : isNewUser ? <RenderNewUserForm show={show} email={email} handleSubmit={e => handleSubmit(e)} />
                     : <RenderNormalForm handleSubmit={e => handleSubmit(e)} />}
         </div>

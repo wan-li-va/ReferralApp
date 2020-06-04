@@ -12,6 +12,7 @@ const Dashboard = (props) => {
     const [nextAchievement, setNextAchievement] = useState(10);
     const [referralCode, setReferralCode] = useState("CODE");
     const [rewards, setRewards] = useState([]);
+    const [rewardsJson, setRewardsJson] = useState({});
     const [userRewards, setUserRewards] = useState([])
     const [hasShared, setHasShared] = useState(false);
 
