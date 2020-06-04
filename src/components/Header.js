@@ -32,7 +32,7 @@ const Header = props => {
                     variant='warning' onClick={() => {
                         setRedirect(true);
                     }}>Sign In</Button>}
-            {redirect ? <Redirect to='/ReferralApp/' /> : ""}
+            {redirect ? <Redirect to='/ReferralApp' /> : ""}
         </div>
     )
 };

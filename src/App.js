@@ -37,7 +37,7 @@ const App = ({ firebase }) => {
     setID("3");
     setSignedIn(false);
     setAuthUser(null);
-    return <Redirect to='/ReferralApp/' />
+    return <Redirect to='/ReferralApp' />
   }
 
   const setUser = (uid) => {
@@ -51,15 +51,16 @@ const App = ({ firebase }) => {
       <div className="App">
         <Header signedIn={signedIn} handleSignOut={() => handleSignOut()} />
         <Switch>
-          <Route path="/ReferralApp/dashboard" exact >
-            <Dashboard user={authUser} />
-          </Route>
-          <Route path="/ReferralApp/about" component={AboutUs} />
-          <Route path="/ReferralApp/faq" component={FAQ} />
-
-          <Route path="/ReferralApp/" exact >
-            <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
-          </Route>
+          <Route path="/ReferralApp/about" component={AboutUs} exact />
+          <Route path="/ReferralApp/faq" component={FAQ} exact />
+          {(signedIn && true) ? <Redirect to='/ReferralApp/dashboard' /> :
+            <Route path="/ReferralApp" exact >
+              <Auth setUser={uid => setUser(uid)} signedIn={signedIn} />
+            </Route>}
+          {signedIn ?
+            <Route path='/ReferralApp/dashboard' exact>
+              <Dashboard user={authUser} />
+            </Route> : <Redirect to='/ReferralApp' />}
         </Switch>
       </div>
     </Router >
