@@ -32,10 +32,10 @@
 .faq {
     background-image: url('https://c1.wallpaperflare.com/preview/80/511/734/shoe-fashion-sneaker-leg.jpg');
     color: black;
-    width: 100vw;
-    height: 80vh;
+    min-width: 100vw;
+    min-height: 82vh;
     margin-left: -10vw;
-    
+    margin-top: -2vh;
 }
 
 .text {
