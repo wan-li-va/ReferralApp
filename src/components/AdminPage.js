@@ -3,7 +3,7 @@ import '../styling/AdminPage.css';
 
 const AdminPage = ({ }) => {
     return (
-        <div className="page">
+        <div className="AdminPage">
             Admin
         </div>
     )
