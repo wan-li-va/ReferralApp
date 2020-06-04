@@ -70,7 +70,6 @@ const Dashboard = (props) => {
         }
     }
 
-
     const handleSocialShare = () => {
         if (!hasShared) {
             setNumReferrals(numReferrals + 1);
