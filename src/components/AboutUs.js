@@ -22,7 +22,7 @@ const aboutUs = () => {
       <h5>We seek to provide the most comfortable, fitting, and flexible shoes to our consumers while improving the world, one shoe
         at a time. </h5>
       <p>For every pair of shoes purchased, ReSHOE will donate a pair to children without sneakers. Not only do you
-      buy YOURSELF a brand new pair of shoes, a child in need will be overzeleous when a brand, shiny new pair is delivered to them
+      buy YOURSELF a brand new pair of shoes, a child in need will be overzealous when a brand, shiny new pair is delivered to them
         as well. </p>
       <p>Every shoe is made of sustainable material. We do not hurt the environment in the production or development of our products.
       </p>
