@@ -27,6 +27,12 @@ const App = ({ firebase }) => {
             setAuthUser(snapshot.val());
           }
         })
+      firebase.db.ref().on('child_changed',
+        snapshot => {
+          if (snapshot.key === 'admins') {
+            setAdmins(snapshot.val());
+          }
+        })
       firebase.admins().once('value')
         .then(snapshot => {
           setAdmins(snapshot.val());
