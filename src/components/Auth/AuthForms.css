@@ -17,7 +17,7 @@
     text-align: center;
     background-color: #01236F;
     color: white;
-    /* background-image: url('../../shoesbg.jpg'); */
+    box-shadow: 1.2vw 2.5vh 10px 8px rgb(54, 54, 54);
 }
 
 @media screen and (max-width: 1000px) {

@@ -4,7 +4,7 @@ import '../../styling/Social.css';
 
 const Social = ({ handleSocialShare }) => {
     return (
-        <div>
+        <div className="Social">
             <div className="share-label">
                 Click to Share Your Referral!
             </div>

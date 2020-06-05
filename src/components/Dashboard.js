@@ -91,7 +91,7 @@ const Dashboard = (props) => {
             <Rewards classname="Rewards" rewards={rewardsJson} userRewards={userRewards} />
             <div className="displayMainPanel">
                 <ReferralDisplay className="ReferralDisplay" code={referralCode} />
-                <Social
+                <Social className="Social"
                     handleSocialShare={handleSocialShare}
                     referralCode={referralCode}
                     hasShared={hasShared} />

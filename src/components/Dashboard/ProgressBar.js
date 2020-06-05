@@ -16,13 +16,13 @@ const ProgressComponent = ({ numReferrals, nextAchievement }) => {
         variant = "danger"
     }
     return (
-        <div>
+        <div className="ProgressBar">
             <div className="labels">
                 <p className="left-label">0</p>
                 <p className="center-label">{message}</p>
                 <p className="right-label">{nextAchievement}</p>
             </div>
-            <ProgressBar style={{ height: "30px", width: "250px" }} variant={variant} now={pct} srOnly label={numReferrals} />
+            <ProgressBar style={{ height: "30px", width: "250px"}} variant={variant} now={pct} srOnly label={numReferrals} />
         </div>
     );
 }
