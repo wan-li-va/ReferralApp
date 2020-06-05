@@ -54,7 +54,11 @@ const AdminPage = (props) => {
     }
 
     const changeInputHandler = (e, key) => {
-        if (key === "hasShared" && e.target.checked) {
+        if (key === "numReferrals") {
+            const val = Number(e.target.value);
+            setEditedObject({ ...editedObject, numReferrals: Number(val) });
+        }
+        if (key === "hasShared" && e.target.checked !== undefined && e.target.checked !== null) {
             const val = e.target.checked;
             setEditedObject({ ...editedObject, [key]: val });
         } else if (!e.target) {
@@ -67,7 +71,7 @@ const AdminPage = (props) => {
     }
 
     const handleEditUser = () => {
-        props.firebase.user(selectedUser).update(editedObject);
+        props.firebase.user(selectedUser).update({ ...editedObject, numReferrals: Number(editedObject.numReferrals) });
     }
 
     const handleClearSelectedUser = () => {
@@ -87,6 +91,7 @@ const AdminPage = (props) => {
     const handleDeleteUser = () => {
         if (props.admins.includes(selectedUser)) {
             if (!isGlobalAdmin) {
+                console.log("Reached this point")
                 alert("You do not have permission to delete another admin");
                 return;
             } else if (selectedUser === props.admins[0]) {
@@ -169,6 +174,9 @@ const AdminPage = (props) => {
                             {selectedUser && users && Object.keys(editedObject).map(key => {
                                 // console.log(editedObject);
                                 // console.log(editedObject[key]);
+                                let type = "text";
+                                if (key === "numReferrals")
+                                    type = "number"
                                 if (key === 'hasShared') {
                                     return <HasSharedDisplay hasShared={editedObject[key]}
                                         changeInputHandler={changeInputHandler} />
@@ -180,13 +188,13 @@ const AdminPage = (props) => {
                                     return (
                                         <div>
                                             <label>{key}</label>
-                                            <input type="text" value={editedObject[key]}
+                                            <input type="number" value={editedObject[key]}
                                                 onChange={(e) => changeInputHandler(e, key)} />
                                         </div>
                                     )
                             })}
                             <div className="buttons">
-                                {selectedUser && <button className="option-button" onClick={handleEditUser}>Save Edit</button>}
+                                {selectedUser && <button className="option-button" onClick={() => handleEditUser()}>Save Edit</button>}
                                 <button className="option-button" style={{ backgroundColor: "red" }} onClick={handleDeleteUser}>Delete User</button>
                                 <button className="option-button" onClick={handleClearSelectedUser}>Clear Selected User</button>
                                 {isGlobalAdmin && !props.admins.includes(selectedUser) &&
