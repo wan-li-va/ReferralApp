@@ -5,15 +5,19 @@
     height: 100vh;
     width: 100vw;
     /* background-color: #DDD; */
-    background-image: url('https://i.pinimg.com/originals/6d/df/89/6ddf89a95cc31286387b11c64c1991a8.jpg');
+    /* background-image: url('https://cdn.wallpapersafari.com/44/49/gSQK6e.jpg'); */
+    background-image: url('https://cdn.pixabay.com/photo/2016/08/03/14/07/wooden-background-1566749_960_720.jpg');
+
 }
 
 .displayMainPanel {
     display: flex;
     flex-direction: column;
-    margin-top: 5vh;
+    margin-top: 10vh;
     flex: 2;
     margin-right: 10vw;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .displayProgress {
@@ -21,6 +25,10 @@
     margin-top: 5vh;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(1, 35, 111, 0.7);
+    color: lightgray;
+    padding: 1vh 1vw 1vh 1vw;
+    box-shadow: 8px 10px 5px 3px rgb(54, 54, 54);
 }
 
 .Rewards {
@@ -30,7 +38,7 @@
     flex: 1;
     margin-left: 5vw;
     align-items: center;
-    margin-top: 18vh;
+    margin-top: 25vh;
 }
 
 .ReferralDisplay {
@@ -47,17 +55,21 @@
     padding-left: 10vw;
     padding-right: 10vw;
     outline: #01236F solid 0.8vw;
-    margin-bottom: 4vh;
-    background: #FFE521;
+    margin-bottom: 5vh;
+    background: rgb(255, 229, 33, 0.9);
+    box-shadow: 1vw 1.5vw 10px 10px rgb(54, 54, 54);
 }
 
 .PossibleRewards {
-    background-color: #8C8B8C;
+    background-color: rgb(140, 139, 140, 0.9);
     border-radius: 20px;
     width: 100%;
     text-align: center;
     padding-top: 2vh;
     padding-bottom: 2vh;
+    border: rgb(87, 87, 87) solid 5px;
+    box-shadow: 5px 10px 5px 3px rgb(54, 54, 54);
+    margin-bottom: 15px;
 }
 
 .rewardList {
@@ -70,4 +82,23 @@
     padding: 2vh 1vw 2vh 1vw;
     align-items: center;
     justify-content: center;
+    box-shadow: 5px 8px 10px 3px rgb(54, 54, 54);
+    margin: 10px 0 10px 0;
+}
+
+.Social {
+    /* background-color: rgb(255, 229, 33, 0.6); */
+    background-color: rgb(1, 35, 111, 0.7);
+    color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 20vw;
+    padding: 1vh 2vw 2vh 2vw;
+    box-shadow: 8px 10px 5px 3px rgb(54, 54, 54);
+}
+
+.copyButton {
+    box-shadow: 10px 10px 10px 3px rgb(54, 54, 54);
 }
