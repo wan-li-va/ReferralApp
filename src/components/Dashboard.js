@@ -90,21 +90,24 @@ const Dashboard = (props) => {
         <div className="Dashboard">
             <Rewards classname="Rewards" rewards={rewardsJson} userRewards={userRewards} />
             <div className="displayMainPanel">
+                <div className="displayProgress">
+                    <ProgressBar
+                        numReferrals={numReferrals}
+                        nextAchievement={nextAchievement} />
+                    <NextReward className="nextReward"
+                        numReferrals={numReferrals}
+                        nextAchievement={nextAchievement}
+                        rewards={rewards}
+                    />
+
+                </div>
                 <ReferralDisplay className="ReferralDisplay" code={referralCode} />
                 <Social className="Social"
                     handleSocialShare={handleSocialShare}
                     referralCode={referralCode}
                     hasShared={hasShared} />
-                <div className="displayProgress">
-                    <ProgressBar
-                        numReferrals={numReferrals}
-                        nextAchievement={nextAchievement} />
-                    <NextReward
-                        numReferrals={numReferrals}
-                        nextAchievement={nextAchievement}
-                        rewards={rewards}
-                    />
-                </div>
+
+
             </div>
         </div>
     );

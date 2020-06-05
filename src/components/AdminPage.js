@@ -5,6 +5,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import Form from 'react-bootstrap/Form';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import { withFirebase } from './Firebase';
 
@@ -52,8 +54,16 @@ const AdminPage = (props) => {
     }
 
     const changeInputHandler = (e, key) => {
-        const val = e.target.value;
-        setEditedObject({ ...editedObject, [key]: val });
+        if (key === "hasShared" && e.target.checked) {
+            const val = e.target.checked;
+            setEditedObject({ ...editedObject, [key]: val });
+        } else if (!e.target) {
+            setEditedObject({ ...editedObject, rewards: e });
+        }
+        else {
+            const val = e.target.value;
+            setEditedObject({ ...editedObject, [key]: val });
+        }
     }
 
     const handleEditUser = () => {
@@ -120,8 +130,8 @@ const AdminPage = (props) => {
                                                     fieldName = "Has shared on social";
                                                     display = obj[key] ? "yes" : "no";
                                                 } else if (key === "rewards") {
-                                                    console.log(obj[key]);
-                                                    console.log(rewards);
+                                                    // console.log(obj[key]);
+                                                    // console.log(rewards);
                                                     return <div>
                                                         <b>Rewards: </b>
                                                         {rewards && obj[key][1] ?
@@ -157,13 +167,15 @@ const AdminPage = (props) => {
                     <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
                         <div>
                             {selectedUser && users && Object.keys(editedObject).map(key => {
-                                console.log(editedObject);
-                                console.log(editedObject[key]);
+                                // console.log(editedObject);
+                                // console.log(editedObject[key]);
                                 if (key === 'hasShared') {
                                     return <HasSharedDisplay hasShared={editedObject[key]}
                                         changeInputHandler={changeInputHandler} />
                                 } else if (key === 'rewards') {
-                                    return <RewardsDisplay />
+                                    return <RewardsDisplay changeInputHandler={changeInputHandler}
+                                        rewards={rewards}
+                                        userRewards={editedObject[key]} />
                                 } else if (key !== 'id')
                                     return (
                                         <div>
@@ -173,14 +185,14 @@ const AdminPage = (props) => {
                                         </div>
                                     )
                             })}
-                            <div>
-                                {selectedUser && <button onClick={handleEditUser}>Save Edit</button>}
-                                <button style={{ backgroundColor: "red" }} onClick={handleDeleteUser}>Delete User</button>
-                                <button onClick={handleClearSelectedUser}>Clear Selected User</button>
+                            <div className="buttons">
+                                {selectedUser && <button className="option-button" onClick={handleEditUser}>Save Edit</button>}
+                                <button className="option-button" style={{ backgroundColor: "red" }} onClick={handleDeleteUser}>Delete User</button>
+                                <button className="option-button" onClick={handleClearSelectedUser}>Clear Selected User</button>
                                 {isGlobalAdmin && !props.admins.includes(selectedUser) &&
-                                    <button onClick={handleMakeAdmin}>Make General Admin</button>}
+                                    <button className="option-button" onClick={handleMakeAdmin}>Make General Admin</button>}
                                 {isGlobalAdmin && props.admins.includes(selectedUser) &&
-                                    <button onClick={handleRemoveAdmin}>Remove Admin Status</button>}
+                                    <button className="option-button" onClick={handleRemoveAdmin}>Remove Admin Status</button>}
                             </div>
                         </div>
                     </div>}
@@ -193,17 +205,54 @@ const HasSharedDisplay = ({ changeInputHandler, hasShared }) => {
     return (
         <div>
             <label>{"Has shared on social"}</label>
-            <select value={hasShared}
-                onChange={(e) => changeInputHandler(e, 'hasShared')} >
-                <option></option>
-            </select>
+            <Checkbox checked={hasShared}
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                onChange={(e) => changeInputHandler(e, 'hasShared')} />
         </div >
     )
 }
 
-const RewardsDisplay = (props) => {
+const RewardsDisplay = ({ changeInputHandler, rewards, userRewards }) => {
+    // const [rewardsArr, setRewardsArr] = useState([]);
+
+    const updateArr = (e, rewardKey) => {
+        const boolVal = e.target.checked;
+        let newArr = [...userRewards];
+        if (boolVal) {
+            if (!userRewards.includes(rewardKey)) { // not in array, add it
+                newArr.push(rewardKey);
+            }
+        } else {
+            if (userRewards.includes(rewardKey)) { // in array remove it
+                newArr = newArr.filter(key => key !== rewardKey);
+            }
+        }
+        changeInputHandler(newArr, 'rewards');
+        // setRewardsArr(newArr);
+    }
+
+    let ct = -1;
+    const keys = Object.keys(rewards);
     return (
-        <div></div>
+        <div>
+            <label>Rewards:</label>
+            {Object.values(rewards).map(reward => {
+                if (reward !== "dummy") {
+                    ct++;
+                    // console.log(keys[ct]);
+                    const key = keys[ct];
+                    return (
+                        <div>
+                            <Checkbox
+                                checked={userRewards.includes(key)}
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                onChange={(e) => updateArr(e, key)} />
+                            {reward.name}
+                        </div>
+                    )
+                }
+            })}
+        </div>
     )
 }
 

@@ -4,8 +4,6 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    /* background-color: #DDD; */
-    /* background-image: url('https://cdn.wallpapersafari.com/44/49/gSQK6e.jpg'); */
     background-image: url('https://cdn.pixabay.com/photo/2016/08/03/14/07/wooden-background-1566749_960_720.jpg');
 
 }
@@ -13,22 +11,31 @@
 .displayMainPanel {
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
+    margin-top: 18vh;
     flex: 2;
     margin-right: 10vw;
-    /* justify-content: center; */
     align-items: center;
+    background-color: rgba(1, 35, 111, 0.8);
+    max-height: 75vh;
+    justify-content: center;
+    /* padding: 4vh 1vw 6vh 1vw; */
+    /* background-color: rgb(211, 211, 211, 0.8); */
+    border-radius: 25px;
+    border: rgb(1, 35, 111) solid 0.5vw;
+    box-shadow: 1vw 1vw 10px 5px rgb(54, 54, 54);
 }
 
 .displayProgress {
     display: flex;
-    margin-top: 5vh;
+    /* margin-top: 2vh; */
     flex-direction: column;
     align-items: center;
-    background-color: rgb(1, 35, 111, 0.7);
+    /* background-color: rgb(1, 35, 111, 0.7); */
     color: lightgray;
     padding: 1vh 1vw 1vh 1vw;
-    box-shadow: 8px 10px 5px 3px rgb(54, 54, 54);
+    /* box-shadow: 8px 10px 5px 3px rgb(54, 54, 54); */
+    text-align: center;
+    margin-bottom: 3vh;
 }
 
 .Rewards {
@@ -38,26 +45,25 @@
     flex: 1;
     margin-left: 5vw;
     align-items: center;
-    margin-top: 25vh;
+    margin-top: 20vh;
 }
 
 .ReferralDisplay {
     display: flex;
     flex-direction: column;
-    margin-bottom: 5vh;
     align-items: center;
     justify-content: center;
 }
 
 .Code {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding: 7vh 0vw 7vh 0vw;
+    width: 30vw;
+    /* height: 15vh; */
+    text-align: center;
     outline: #01236F solid 0.8vw;
     margin-bottom: 5vh;
     background: rgb(255, 229, 33, 0.9);
-    box-shadow: 1vw 1.5vw 10px 10px rgb(54, 54, 54);
+    /* box-shadow: 1vw 1.5vw 10px 10px rgb(54, 54, 54); */
 }
 
 .PossibleRewards {
@@ -74,7 +80,8 @@
 
 .rewardList {
     overflow-y: auto;
-    height: 60vh;
+    height: 55vh;
+    box-shadow: 1.1vw 1.3vw 10px 3px rgb(54, 54, 54);
 }
 
 .Card {
@@ -84,11 +91,12 @@
     justify-content: center;
     box-shadow: 5px 8px 10px 3px rgb(54, 54, 54);
     margin: 10px 0 10px 0;
+    text-align: center;
 }
 
 .Social {
     /* background-color: rgb(255, 229, 33, 0.6); */
-    background-color: rgb(1, 35, 111, 0.7);
+    /* background-color: rgb(1, 35, 111, 0.7); */
     color: lightgray;
     display: flex;
     flex-direction: column;
@@ -96,9 +104,16 @@
     align-items: center;
     max-width: 20vw;
     padding: 1vh 2vw 2vh 2vw;
-    box-shadow: 8px 10px 5px 3px rgb(54, 54, 54);
+    /* box-shadow: 8px 10px 5px 3px rgb(54, 54, 54); */
 }
 
 .copyButton {
-    box-shadow: 10px 10px 10px 3px rgb(54, 54, 54);
+    /* box-shadow: 10px 10px 10px 3px rgb(54, 54, 54); */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.nextReward {
+    margin-top: 2vh;
 }
