@@ -159,7 +159,12 @@ const AdminPage = (props) => {
                             {selectedUser && users && Object.keys(editedObject).map(key => {
                                 console.log(editedObject);
                                 console.log(editedObject[key]);
-                                if (key !== 'id')
+                                if (key === 'hasShared') {
+                                    return <HasSharedDisplay hasShared={editedObject[key]}
+                                        changeInputHandler={changeInputHandler} />
+                                } else if (key === 'rewards') {
+                                    return <RewardsDisplay />
+                                } else if (key !== 'id')
                                     return (
                                         <div>
                                             <label>{key}</label>
@@ -184,9 +189,15 @@ const AdminPage = (props) => {
     )
 }
 
-const HasSharedDisplay = (props) => {
+const HasSharedDisplay = ({ changeInputHandler, hasShared }) => {
     return (
-        <div></div>
+        <div>
+            <label>{"Has shared on social"}</label>
+            <select value={hasShared}
+                onChange={(e) => changeInputHandler(e, 'hasShared')} >
+                <option></option>
+            </select>
+        </div >
     )
 }
 
