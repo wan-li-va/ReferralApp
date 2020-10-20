@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Usage and Demoing
+
+To see the admin page, use the email wan@wan.com.
+To see a basic user page, enter a random email and no referral code.
+
 ## Deployed App
 
 This app is deployed at (https://wan-li-va.github.io/ReferralApp/#/)
